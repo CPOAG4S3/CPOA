@@ -6,12 +6,16 @@
 
 <body>
 
+
+
+
 	<form method="get" action="accueil.php" id = "formulaire">
 		<table style="width:100%">
 			<tr> 
 				<td> 
 					<p>Nom : </p><input type="text" name="nom" />
-				</td> 				
+				</td> 	
+				<td> <div align = "center">	<img src="./images/plan_court.jpg" alt="Plan des courts" style="width:30vw;height:auto;" >  </div></td>				
 				<td>
 					<p>Date : </p><input type="date" name="date_reservation"/>
 					<select name="Court" form = "formulaire">
@@ -28,6 +32,7 @@
 				<td> 
 					<p>Prénom : </p> <input type="text" name="prenom" />
 				</td>
+				<td> </td>
 				<td> 
 					<p> Court : </p><input type="text" name="court" />
 					<select name="Court" form = "formulaire">
@@ -45,6 +50,11 @@
 				<td>
 					<p>Date de naissance : </p> <input type="date" name="datenaiss" />
 				</td>		
+											
+				<td> 
+				
+				</td>
+						
 				<td> 
 					<p> Zone : </p><input type="text" name="zone" />
 					<select name="Zone" form = "formulaire" >
@@ -66,20 +76,19 @@
 				
 			<tr>	
 				<td> 
-					<p>Mail : </p><input type="text" name="mail" /></tr>
+					<p>Mail : </p><input type="text" name="mail" />
 				</td>
+				<td> </td>
 				<td> 	
 					<p>Nombre de places : </p><input type="text" name="nb_places" />
 				</td>
+				
 			</tr>
 		</table>
-		<input type="submit" value="Envoyer" align = center>
+		<div align = "center"> <input type="submit" value="Envoyer" > </div>
 	</form>
 </body>
 </html>
 
 
-<!-->		<td> 
-				<img src="/images/plan_court.jpg" alt="Plan des courts" style="width:128px;height:128px;"> 
-			</td>
-<!-->
+	
