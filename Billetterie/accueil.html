@@ -11,7 +11,10 @@
 				<td> 
 					<p>Nom : </p><input type="text" name="nom" />
 				</td> 	
-				<td> <div align = "center">	<img src="./images/plan_court.jpg" alt="Plan des courts" style="width:30vw;height:auto;" >  </div></td>				
+				<td rowspan=3> <div align = "center">	
+                                    <img src="./images/plan_court.jpg" alt="Plan des courts" style="width:30vw;height:auto;"> 
+                                </div>
+                </td>				
 				<td>
 					<p>Date : </p><input type="date" name="date_reservation"/>
 				</td>			
@@ -21,7 +24,6 @@
 				<td> 
 					<p>Prénom : </p> <input type="text" name="prenom" />
 				</td>
-				<td> </td>
 				<td> 
 					<p> Court : </p>
 					<select name="Court" form = "formulaire">
@@ -38,12 +40,7 @@
 			<tr> 
 				<td>
 					<p>Date de naissance : </p> <input type="date" name="datenaiss" />
-				</td>		
-											
-				<td> 
-				
-				</td>
-						
+				</td>								
 				<td> 
 					<p> Zone : </p>
 					<select name="Zone" form = "formulaire" >
@@ -67,7 +64,6 @@
 				<td> 
 					<p>Mail : </p><input type="email" name="mail" />
 				</td>
-				<td> </td>
 				<td> 	
 					<p>Nombre de places : </p><input type="number" name="nb_places" />
 				</td>
@@ -77,8 +73,9 @@
 		<div align = "center">
             <input type="submit" value="Calcul du prix" id="calcul" > 
         </div>
+        </br>
 	</form>
-    <a href="paiement.html"> 
+    <a href="paiement.html" style="padding-left:47.5vw;padding-right:auto;"> 
         <input type="submit" value="Payer" id="redirect"> 
     </a>
 </body>
