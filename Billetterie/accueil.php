@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-</head>
-
-
-function Connect_db(){
+<?php
+    session_start();
+    function Connect_db(){
 		$host="iutdoua-webetu.univ-lyon1.fr"; 
 		$user="p1405029";     
 		$password="213866";     
@@ -19,7 +14,13 @@ function Connect_db(){
 		    die('Erreur : '.$e->getMessage());
 		}  
 	}
+?>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
 
 
 <body>
@@ -98,6 +99,3 @@ function Connect_db(){
     </a>
 </body>
 </html>
-
-
-	
