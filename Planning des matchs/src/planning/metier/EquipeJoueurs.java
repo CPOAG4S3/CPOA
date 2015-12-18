@@ -1,23 +1,21 @@
 package planning.metier;
 
 public class EquipeJoueurs {
-    String numEquipe;
-    Joueur joueur1, joueur2; //TODO: Utiliser l'objet ou l'identifiant ?
-    
-    public EquipeJoueurs(String p_numEquipe, Joueur p_joueur1, Joueur p_joueur2){
-        //TODO: Gérer création du numéro de l'équipe ?
-        numEquipe = p_numEquipe;
-        joueur1 = p_joueur1;
-        joueur2 = p_joueur2;
+    String numEquipe, joueur1, joueur2;
+
+    public EquipeJoueurs(String numEquipe, String joueur1, String joueur2) {
+        this.numEquipe = numEquipe;
+        this.joueur1 = joueur1;
+        this.joueur2 = joueur2;
     }
 
     public String getNumEquipe() {
         return numEquipe;
     }
-    public Joueur getJoueur1() {
+    public String getJoueur1() {
         return joueur1;
     }
-    public Joueur getJoueur2() {
+    public String getJoueur2() {
         return joueur2;
     }
 }
