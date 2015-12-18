@@ -14,6 +14,7 @@
 		    die('Erreur : '.$e->getMessage());
 		}  
 	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -94,6 +95,33 @@
         </div>
         </br>
 	</form>
+
+	<?php
+	// test tous les champs sont rensignés
+	if (
+		!empty($_GET['nom']) 
+		&& !empty($_GET['prenom']) 		 
+		&& !empty($_GET['naissance']) 
+		&& !empty($_GET['mail']) 
+		&& !empty($_GET['date']) 
+		&& !empty($_GET['court'])
+		&& !empty($_GET['zone']) 
+		&& !empty($_GET['nbplace']) 		
+		
+	){
+					
+			$nom = $_GET['nom'];
+			$prenom = $_POST['prenom'];	
+			$email = $_POST['email'];			
+			$naissance = $_GET['naissance'];
+			$date = $_GET['date'];
+			$court = $_GET['court'];
+			$zone = $_GET['zone'];
+			$nbplace = $_GET['nbplace'];
+						
+			$bdd = Connect_db(); 	
+	?>
+	
     <a href="paiement.html" style="padding-left:47.5vw;padding-right:auto;"> 
         <input type="submit" value="Payer" id="redirect"> 
     </a>
