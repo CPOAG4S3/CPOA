@@ -4,6 +4,24 @@
 <meta charset="utf-8"/>
 </head>
 
+
+function Connect_db(){
+		$host="iutdoua-webetu.univ-lyon1.fr"; 
+		$user="p1405029";     
+		$password="213866";     
+		$dbname="p1405029";
+		
+		try {
+		    $bdd=new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8',$user,$password);
+		    return $bdd;
+		}
+		catch (Exception $e) {
+		    die('Erreur : '.$e->getMessage());
+		}  
+	}
+
+
+
 <body>
 	<form method="get" action="accueil.php" id = "formulaire">
 		<table style="width:100%">
