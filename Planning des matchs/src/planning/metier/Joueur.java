@@ -18,4 +18,10 @@ public class Joueur {
     public String getPrenom() {
         return prenom;
     }   
+
+    @Override
+    public String toString() {
+        return "Joueur num: " + numLicence + ", Nom: " + nom + ", Prenom: " + prenom;
+    }
+    
 }
