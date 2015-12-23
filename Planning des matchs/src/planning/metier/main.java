@@ -7,8 +7,10 @@ import java.util.List;
 
 import planning.dao.IArbitreDAO;
 import planning.dao.IJoueurDAO;
+import planning.dao.ICourtDAO;
 
 import planning.dao.oracle.OracleArbitreDAO;
+import planning.dao.oracle.OracleCourtDAO;
 import planning.dao.oracle.OracleJoueurDAO;
 
 import planning.dao.oracle.OracleDataSourceDAO;
@@ -18,16 +20,23 @@ public class main {
     private static OracleDataSourceDAO dataSourceDAO;
     private static IJoueurDAO joueurDAO;
     private static IArbitreDAO arbitreDAO;
+    private static ICourtDAO courtDAO;
+    
     private static Connection connexionBD;
     
    public static void main (String String[]) throws SQLException{
          
         setConnexionJoueur();
         afficherListeJoueurs();
-        
+        System.out.println("");
         setConnexionArbitre();
         afficherListeArbitres();
+        System.out.println("");
+        setConnexionCourt();
+        afficherListeCourts();
+                
     }
+  
    public static void setConnexionJoueur(){
        try{
            dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
@@ -59,9 +68,26 @@ public class main {
    }
    public static void afficherListeArbitres(){
        List<Arbitre> listeArbitres = arbitreDAO.getLesArbitres(); //Ligne Importante pour la partie vue
-        listeArbitres.stream().forEach((joueur) -> {
-            System.out.println(joueur);
+        listeArbitres.stream().forEach((arbitre) -> {
+            System.out.println(arbitre);
+        });
+   }
+
+   public static void setConnexionCourt(){
+       try{
+           dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
+           courtDAO = new OracleCourtDAO();
+           courtDAO.setDataSource(dataSourceDAO);
+           connexionBD = dataSourceDAO.getConnection();
+           courtDAO.setConnection(connexionBD);
+        }
+        catch(SQLException ex){
+        }
+   }
+   public static void afficherListeCourts(){
+       List<Court> listeCourts = courtDAO.getLesCourts();
+        listeCourts.stream().forEach((court) -> {
+            System.out.println(court);
         });
    }
 }
-
