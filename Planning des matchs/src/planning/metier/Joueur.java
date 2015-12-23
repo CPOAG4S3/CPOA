@@ -5,8 +5,8 @@ public class Joueur {
     
     public Joueur(String p_numLicence, String p_nom, String p_prenom){
         numLicence = p_numLicence;
-        nom = p_nom;
-        prenom = p_prenom;
+        nom        = p_nom;
+        prenom     = p_prenom;
     }
        
     public String getNumLicence() {
