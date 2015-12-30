@@ -1,0 +1,58 @@
+html{
+    font-size: 2vh;
+    background-color: gainsboro;
+}
+
+img{
+    width:30vw;
+    height:auto;
+}
+
+a{
+    display:block;
+    text-align: center;
+}
+
+table{
+    width:98vw; 
+    height:auto;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    padding-left: 0vw;
+    padding-right: 0vw;
+    border-color: black;
+}
+
+td{
+    text-align: center;
+    padding-top:2vh;
+}
+
+input,select{
+    background-color: lightgreen;
+    
+}
+
+<!-- ================================================================================================== -->
+
+select:nth-child(even){
+    background-color: green;            <!-- à corriger -->
+}
+select:nth-child(odd){
+    background-color: lightgreen;   
+}
+
+<!-- ================================================================================================== -->
+
+
+input#nb_places{
+    width: 2.5vw;
+}
+
+input#datenaiss,date_reservation{
+    width: 9.5vw;   
+}
+
+input#calcul,redirect{
+    background-color: white;            <!-- redirect non white ? -->
+}
