@@ -104,14 +104,14 @@
         </form>
 
         <?php
-            if (!empty($_GET['nom']) 
-                && !empty($_GET['prenom']) 		 
+            if (!empty($_GET['nom'])
+                && !empty($_GET['prenom'])
                 && !empty($_GET['date_reservation']) 
-                && !empty($_GET['mail']) 
-                && !empty($_GET['court']) 
+                && !empty($_GET['mail'])
+                && !empty($_GET['court'])
                 && !empty($_GET['zone'])
-                && !empty($_GET['datenaiss']) 
-                && !empty($_GET['nb_places']) 
+                && !empty($_GET['datenaiss'])
+                && !empty($_GET['nb_places'])
                 && !empty($_GET['code_promo'])){
 
                     $nom = $_GET['nom'];
@@ -125,9 +125,12 @@
                     $code_promo = $_GET['code_promo'];
 
                     $bdd = Connect_db(); 
-                    echo $nom;
+                    ?> <p>Ca marche</p>
+        <?php
             } else {
-                echo 'erreur';
+                ?>
+                <p>Ca marce pas</p>
+        <?php
             }
         ?>
 
