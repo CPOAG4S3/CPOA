@@ -97,9 +97,7 @@
                     </td>
                 </tr>
             </table>
-                <div id = "calcul">
-                    <input type="submit" value="Calcul du prix" id="calcul" >
-                </div>
+                <input type="submit" value="Calcul du prix" id="calcul" >
             </br>
         </form>
 
@@ -125,7 +123,7 @@
                     $code_promo = $_GET['code_promo'];
 
                     $bdd = Connect_db(); 
-                echo $nom;
+                echo $nom;;
             }
         ?>
 
