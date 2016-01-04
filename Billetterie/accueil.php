@@ -125,7 +125,9 @@
                     $code_promo = $_GET['code_promo'];
 
                     $bdd = Connect_db(); 
-                echo $nom;
+                    echo $nom;
+            } else {
+                echo 'erreur';
             }
         ?>
 
