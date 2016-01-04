@@ -54,7 +54,12 @@ input#datenaiss,date_reservation{
     width: 9.5vw;   
 }
 
-input#calcul,redirect{
+#calcul{
     align:center;
-    background-color: white;            <!-- redirect non white ? -->
+    background-color: white;
+}
+
+#redirect{
+    align:center;
+    background-color: white;            
 }
