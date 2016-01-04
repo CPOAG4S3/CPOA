@@ -3,7 +3,7 @@ package planning.metier;
 public class Joueur {
     String numLicence, nom, prenom;
     
-    public Joueur(String p_numLicence, String p_nom, String p_prenom){
+    public Joueur(String p_numLicence, String p_prenom, String p_nom){
         numLicence = p_numLicence;
         nom        = p_nom;
         prenom     = p_prenom;

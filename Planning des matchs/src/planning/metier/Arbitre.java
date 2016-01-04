@@ -22,13 +22,21 @@ public class Arbitre {
     }
     
 
-    public void ajouterNbArbitrageSimple(){
-        nbArbitrageSimple++;
+    public boolean ajouterNbArbitrageSimple(){ //Renvoie false si l'arbitre a deja arbitré 2 matchs de ce type. Sinon ajoute 1
+        if (nbArbitrageSimple < 2){
+            nbArbitrageSimple++;
+            return true;
+        }
+        else return false;
     }
-    public void ajouterNbArbitrageDouble(){
-        nbArbitrageDouble++;
+    public boolean ajouterNbArbitrageDouble(){
+        if (nbArbitrageDouble < 2){
+            nbArbitrageDouble++;
+            return true;
+        }
+        else return false;
     }
-    //public boolean  Pour verifier le nb d'arbtrage simple et double
+    //public boolean  Pour verifier le nb d'arbitrage simple et double
     
     /* Getters */
     public String getNumArbitre() {
