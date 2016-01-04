@@ -32,9 +32,8 @@
                     <td> 
                         <p>Nom : </p><input type="text" name="nom" />
                     </td> 	
-                    <td rowspan=4> <div align = "center">	
-                                        <img src="./images/plan_court.jpg" alt="Plan des courts"> 
-                                    </div>
+                    <td rowspan=4> 
+                        <img src="./images/plan_court.jpg" alt="Plan des courts"> 
                     </td>				
                     <td>
                         <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" />
@@ -66,18 +65,18 @@
                     <td> 
                         <p> Zone : </p>
                         <select name="zone" form = "formulaire" >
-                        <option value = "A"> A </option>
-                        <option value = "B"> B </option>
-                        <option value = "C"> C </option>
-                        <option value = "D"> D </option>
-                        <option value = "E"> E </option>
-                        <option value = "F"> F </option>
-                        <option value = "G"> G </option>
-                        <option value = "H"> H </option>
-                        <option value = "I"> I </option>
-                        <option value = "J"> J </option>
-                        <option value = "K"> K </option>
-                        <option value = "L"> L </option>
+                        <div id="pair"><option value = "A"> A </option></div>
+                        <div id="impair"><option value = "B"> B </option></div>
+                        <div id="pair"><option value = "C"> C </option></div>
+                        <div id="impair"><option value = "D"> D </option></div>
+                        <div id="pair"><option value = "E"> E </option></div>
+                        <div id="impair"><option value = "F"> F </option></div>
+                        <div id="pair"><option value = "G"> G </option></div>
+                        <div id="impair"><option value = "H"> H </option></div>
+                        <div id="pair"><option value = "I"> I </option></div>
+                        <div id="impair"><option value = "J"> J </option></div>
+                        <div id="pair"><option value = "K"> K </option></div>
+                        <div id="impair"><option value = "L"> L </option></div>
                         </select>
                     </td>
                 </tr>	
@@ -98,9 +97,7 @@
                     </td>
                 </tr>
             </table>
-            <div align = "center">
-                <input type="submit" value="Calcul du prix" id="calcul" > 
-            </div>
+                <input type="submit" value="Calcul du prix" id="calcul" >
             </br>
         </form>
 

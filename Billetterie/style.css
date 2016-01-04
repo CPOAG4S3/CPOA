@@ -6,6 +6,7 @@ html{
 img{
     width:30vw;
     height:auto;
+    align:center;
 }
 
 a{
@@ -35,10 +36,10 @@ input,select{
 
 <!-- ================================================================================================== -->
 
-select:nth-child(even){
-    background-color: green;            <!-- à corriger -->
+#pair{
+    background-color: green;            
 }
-select:nth-child(odd){
+#impair{
     background-color: lightgreen;   
 }
 
@@ -54,5 +55,6 @@ input#datenaiss,date_reservation{
 }
 
 input#calcul,redirect{
+    align:center;
     background-color: white;            <!-- redirect non white ? -->
 }
