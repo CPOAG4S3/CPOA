@@ -1,4 +1,4 @@
-<!-- ?php
+<?php
     session_start();
     function Connect_db(){
 		$host="iutdoua-webetu.univ-lyon1.fr"; 
@@ -15,7 +15,7 @@
 		}  
 	}
 	
-?> -->
+?>
 
 <!DOCTYPE html>
 <html>
@@ -37,7 +37,7 @@
                                     </div>
                     </td>				
                     <td>
-                        <p>Date : </p><input type="date" name="date_reservation"/>
+                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" />
                     </td>			
                 </tr>
 
@@ -61,7 +61,7 @@
 
                 <tr> 
                     <td>
-                        <p>Date de naissance : </p> <input type="date" name="datenaiss" />
+                        <p>Date de naissance : </p> <input type="date" name="datenaiss" id="datenaiss   " />
                     </td>								
                     <td> 
                         <p> Zone : </p>
@@ -88,7 +88,7 @@
                         <p>Mail : </p><input type="email" name="mail" />
                     </td>
                     <td> 	
-                        <p>Nombre de places : </p><input type="number" name="nb_places" />
+                        <p>Nombre de places : </p><input type="number" name="nb_places" id="nb_places" />
                     </td>
 
                 </tr>
