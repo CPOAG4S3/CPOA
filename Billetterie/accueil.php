@@ -30,7 +30,7 @@
             <table>
                 <tr> 
                     <td> 
-                        <p>Nom : </p><input type="text" name="nom" />
+                        <p>Nom : </p><input type="text" name="nom" value = $_GET['nom']/>       <!-- TEST -->
                     </td> 	
                     <td rowspan=4>	
                         <img src="./images/plan_court.jpg" alt="Plan des courts">
