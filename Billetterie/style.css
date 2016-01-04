@@ -55,8 +55,7 @@ input#datenaiss,date_reservation{
 }
 
 #calcul{
-    align:center;
-    background-color: white;
+    text-align:center;
 }
 
 #redirect{
