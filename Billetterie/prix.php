@@ -41,6 +41,9 @@ $prix = 20 * $row_date * $row_zone;
 if ($st_promo == 'Licencie' || $st_promo == 'Solidarite'){	$prix = $prix * $row_promo;}
 
 
+$prix = $prix * ($_GET['nb_places']; 
+
 ?>
+
 
 
