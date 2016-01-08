@@ -23,23 +23,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="131" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="121" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="149" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jButtonCourtCentral" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonCourtAnnexe" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jButtonValiderMatch" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="132" max="32767" attributes="0"/>
+              <EmptySpace pref="150" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,11 +61,20 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane2" pref="117" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="147" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonCourtCentral" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonCourtAnnexe" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <Component id="jButtonValiderMatch" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,5 +133,25 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Court"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonCourtCentral">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Court Central Philippe-Chatrier"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonCourtAnnexe">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Court Annexe Suzanne-Lenglen"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonValiderMatch">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valider Match"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -61,4 +61,64 @@ public class OracleCourtDAO implements ICourtDAO {
         }
         return listeCourts;
     }
+
+    @Override
+    public List<Court> getLesCourtsMatch() {
+        List<Court> listeCourts = null;
+        ResultSet rset = null;
+        Statement stmt = null;
+        Court courtCourant;
+          try{
+            stmt = connexionBD.createStatement();
+            listeCourts = new ArrayList<>();
+            rset = stmt.executeQuery("SELECT * FROM Court WHERE type_court = 'central' OR type_court = 'annexe'");
+            while(rset.next()){
+                courtCourant = new Court(rset.getString(1), rset.getString(2));
+                listeCourts.add(courtCourant); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try{
+                stmt.close();
+                rset.close();
+            }catch(SQLException ex){
+                Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listeCourts;   
+    }
+
+    @Override
+    public List<Court> getLesCourtsEntrainement() {
+        List<Court> listeCourts = null;
+        ResultSet rset = null;
+        Statement stmt = null;
+        Court courtCourant;
+          try{
+            stmt = connexionBD.createStatement();
+            listeCourts = new ArrayList<>();
+            rset = stmt.executeQuery("SELECT * "
+                                   + "FROM Court"
+                                   + "WHERE type_court = 'entrainement'");
+            while(rset.next()){
+                courtCourant = new Court(rset.getString(1), rset.getString(2));
+                listeCourts.add(courtCourant); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try{
+                stmt.close();
+                rset.close();
+            }catch(SQLException ex){
+                Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listeCourts;
+    }
+
+    
 }

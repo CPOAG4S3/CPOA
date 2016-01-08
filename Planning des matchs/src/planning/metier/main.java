@@ -8,12 +8,16 @@ import java.util.List;
 import planning.dao.IArbitreDAO;
 import planning.dao.IJoueurDAO;
 import planning.dao.ICourtDAO;
+import planning.dao.IRamasseurDAO;
+import planning.dao.IMatchDAO;
 
 import planning.dao.oracle.OracleArbitreDAO;
 import planning.dao.oracle.OracleCourtDAO;
 import planning.dao.oracle.OracleJoueurDAO;
 
 import planning.dao.oracle.OracleDataSourceDAO;
+import planning.dao.oracle.OracleMatchDAO;
+import planning.dao.oracle.OracleRamasseurDAO;
 
 
 public class main {
@@ -21,6 +25,8 @@ public class main {
     private static IJoueurDAO joueurDAO;
     private static IArbitreDAO arbitreDAO;
     private static ICourtDAO courtDAO;
+    private static IRamasseurDAO ramasseurDAO;
+    private static IMatchDAO matchDAO;
     
     private static Connection connexionBD;
     
@@ -33,7 +39,13 @@ public class main {
         afficherListeArbitres();
         System.out.println("");
         setConnexionCourt();
-        afficherListeCourts();
+        afficherListeCourtsMatch();
+        System.out.println("");
+        setConnexionRamasseur();
+        afficherListeRamasseurs();
+        System.out.println("");
+        setConnexionMatch();
+        ajouterMatch();
                 
     }
   
@@ -84,10 +96,46 @@ public class main {
         catch(SQLException ex){
         }
    }
-   public static void afficherListeCourts(){
-       List<Court> listeCourts = courtDAO.getLesCourts();
+   public static void afficherListeCourtsMatch(){
+       List<Court> listeCourts = courtDAO.getLesCourtsMatch();
         listeCourts.stream().forEach((court) -> {
             System.out.println(court);
         });
    }
+
+   public static void setConnexionRamasseur(){
+       try{
+           dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
+           ramasseurDAO = new OracleRamasseurDAO();
+           ramasseurDAO.setDataSource(dataSourceDAO);
+           connexionBD = dataSourceDAO.getConnection();
+           ramasseurDAO.setConnection(connexionBD);
+        }
+        catch(SQLException ex){
+        }
+   }
+   public static void afficherListeRamasseurs(){
+       List<Ramasseur> listeRamasseurs = ramasseurDAO.getLesRamasseurs();
+        listeRamasseurs.stream().forEach((ramasseur) -> {
+            System.out.println(ramasseur);
+        });
+   }
+
+    private static void setConnexionMatch() {
+        try{
+           dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
+           matchDAO = new OracleMatchDAO();
+           matchDAO.setDataSource(dataSourceDAO);
+           connexionBD = dataSourceDAO.getConnection();
+           matchDAO.setConnection(connexionBD);
+        }
+        catch(SQLException ex){
+        }
+    }
+    private static void ajouterMatch() {
+        //Avant, prendre en compte la limite max des arbitre
+        java.sql.Date sDate = new java.sql.Date(System.currentTimeMillis());
+        Match nouveauMatch = new Match(2, sDate, "1", "simple", "Philippe-Chatrier", "0123456", "0123457", "", "", "", "", "", "", "", "", "", "");
+        matchDAO.ajouterMatch(nouveauMatch);      
+    }
 }

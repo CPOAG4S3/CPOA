@@ -51,6 +51,10 @@ public class FenetreAppli extends javax.swing.JFrame {
         jListJoueur1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListJoueur2 = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        jButtonCourtCentral = new javax.swing.JButton();
+        jButtonCourtAnnexe = new javax.swing.JButton();
+        jButtonValiderMatch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +78,14 @@ public class FenetreAppli extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListJoueur2);
 
+        jLabel4.setText("Court");
+
+        jButtonCourtCentral.setText("Court Central Philippe-Chatrier");
+
+        jButtonCourtAnnexe.setText("Court Annexe Suzanne-Lenglen");
+
+        jButtonValiderMatch.setText("Valider Match");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,12 +97,18 @@ public class FenetreAppli extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonCourtCentral)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCourtAnnexe))
+                    .addComponent(jButtonValiderMatch))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,10 +120,18 @@ public class FenetreAppli extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel4)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCourtCentral)
+                    .addComponent(jButtonCourtAnnexe))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jButtonValiderMatch)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -148,9 +174,13 @@ public class FenetreAppli extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCourtAnnexe;
+    private javax.swing.JButton jButtonCourtCentral;
+    private javax.swing.JButton jButtonValiderMatch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jListJoueur1;
     private javax.swing.JList<String> jListJoueur2;
     private javax.swing.JScrollPane jScrollPane1;

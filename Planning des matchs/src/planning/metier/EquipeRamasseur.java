@@ -1,7 +1,7 @@
 package planning.metier;
 
 public class EquipeRamasseur {
-    private String numEquipe, Ramasseur1, Ramasseur2, Ramasseur3, Ramasseur4, Ramasseur5, Ramasseur6;
+    private final String numEquipe, Ramasseur1, Ramasseur2, Ramasseur3, Ramasseur4, Ramasseur5, Ramasseur6;
 
     public EquipeRamasseur(String numEquipe, String Ramasseur1, String Ramasseur2, String Ramasseur3, String Ramasseur4, String Ramasseur5, String Ramasseur6) {
         this.numEquipe = numEquipe;
@@ -34,5 +34,4 @@ public class EquipeRamasseur {
     public String getRamasseur6() {
         return Ramasseur6;
     }
-   
 }

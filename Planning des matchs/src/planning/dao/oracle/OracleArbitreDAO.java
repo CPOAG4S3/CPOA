@@ -62,4 +62,14 @@ public class OracleArbitreDAO implements IArbitreDAO{
         }
         return listeArbitres;
     }
+
+    @Override
+    public List<Arbitre> getLesArbitresDispo() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Arbitre> getLesArbitresDispoITT1() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

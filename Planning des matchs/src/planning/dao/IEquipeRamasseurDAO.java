@@ -1,15 +1,12 @@
 package planning.dao;
 
-import java.util.List;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
-import planning.metier.Arbitre;
+import planning.metier.EquipeRamasseur;
 
-public interface IArbitreDAO {
-    public List<Arbitre> getLesArbitres();
-    public List<Arbitre> getLesArbitresDispo();
-    public List<Arbitre> getLesArbitresDispoITT1();
+public interface IEquipeRamasseurDAO {
+    public boolean ajouterEquipeRamasseur(EquipeRamasseur nouvelleEquipe);
     public void setDataSource(DataSource ds);
     public void setConnection(Connection c);
     public void closeConnection(Connection c) throws SQLException;    

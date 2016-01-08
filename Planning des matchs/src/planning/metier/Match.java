@@ -1,19 +1,21 @@
 package planning.metier;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Match {
-   private String numMatch;
+   private int numMatch;
    private Date horaire;
    private String niveau, typeMatch, nomCourtMatch;
-   private String participant1, participant2, equipe1, equipe2;
+   private String participant1 = "", participant2 = "", equipe1 = "", equipe2 = "";
    private String joueurGagnant, equipeGagnante;
    private String equipeRamasseur1, equipeRamasseur2;
    private String arbitreLigne1, arbitreLigne2, arbitreLigne3, arbitreLigne4, arbitreLigne5, arbitreLigne6;
    private String arbitreFilet, arbitreChaise;
 
    //Constructeur pour ajouter un match simple
-    public Match(String numMatch, Date horaire, String niveau, String typeMatch, String nomCourtMatch, String membre1, String membre2, String equipeRamasseur1, String equipeRamasseur2, String arbitreLigne1, String arbitreLigne2, String arbitreLigne3, String arbitreLigne4, String arbitreLigne5, String arbitreLigne6, String arbitreFilet, String arbitreChaise) {
+    public Match(int numMatch, Date horaire, String niveau, String typeMatch, String nomCourtMatch, String membre1, String membre2, String equipeRamasseur1, String equipeRamasseur2, String arbitreLigne1, String arbitreLigne2, String arbitreLigne3, String arbitreLigne4, String arbitreLigne5, String arbitreLigne6, String arbitreFilet, String arbitreChaise) {
         this.numMatch = numMatch;
         this.horaire = horaire;
         this.niveau = niveau;
@@ -39,7 +41,7 @@ public class Match {
         }
     }
 
-    public String getNumMatch() {
+    public int getNumMatch() {
         return numMatch;
     }
     public Date getHoraire() {
@@ -102,5 +104,14 @@ public class Match {
     public String getArbitreChaise() {
         return arbitreChaise;
     }
-    //Faire méthode getLesArbitresDeLigne();
+    public List<String> getLesArbitresDeLigne(){
+        List<String> listeArbitresLigne = new ArrayList<>();
+        listeArbitresLigne.add(arbitreLigne1);
+        listeArbitresLigne.add(arbitreLigne2);
+        listeArbitresLigne.add(arbitreLigne3);
+        listeArbitresLigne.add(arbitreLigne4);
+        listeArbitresLigne.add(arbitreLigne5);
+        listeArbitresLigne.add(arbitreLigne6);
+        return listeArbitresLigne;
+    }
 }

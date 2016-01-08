@@ -14,7 +14,6 @@ public class Court {
     public String getNomCourt() {
         return nomCourt;
     }
-
     @Override
     public String toString() {
         return "Court " + typeCourt + " " + nomCourt;
