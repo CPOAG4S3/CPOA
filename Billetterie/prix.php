@@ -47,3 +47,12 @@ $prix = $prix * ($_GET['nb_places'];
 
 
 
+/*
+
+retirer places de la bd quand redirection achat
+page pour set nb place total
+afficher nb places restantes // msg erreur 
+CSS
+
+
+*/§
