@@ -130,11 +130,12 @@
                     
 
                     $bdd = Connect_db(); 
-                    ?> <p>Ca marche</p>
+                    //S'amuser avec PHP pour tout faire marcher//
+                    ?> 
         <?php
             } else {
                 ?>
-                <p>Ca marche pas</p>
+                <p class="echec">Merci de remplir tous les champs avant de calculer le prix</p>
         <?php
             }
         ?>
