@@ -23,6 +23,17 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css" type="text/css">
+        <?php
+            $nom = $_GET['nom'];
+            $prenom = $_GET['prenom'];	
+            $date_reservation = $_GET['date_reservation'];			
+            $mail = $_GET['mail'];
+            $zone = $_GET['zone'];
+            $court = $_GET['court'];
+            $datenaiss = $_GET['datenaiss'];
+            $nb_places = $_GET['nb_places'];
+            $code_promo = $_GET['code_promo'];
+        ?>
     </head>
 
 
@@ -31,19 +42,19 @@
             <table>
                 <tr> 
                     <td> 
-                        <p>Nom : </p><input type="text" name="nom" value =<?php $nom ?>/>       <!-- TEST -->
+                        <p>Nom : </p><input type="text" name="nom" value =<?php echo $nom; ?>/>       <!-- TEST -->
                     </td> 	
                     <td rowspan=4>	
                         <img src="./images/plan_court.jpg" alt="Plan des courts">
                     </td>				
                     <td>
-                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" />
+                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" value=<?php echo $date; ?>>
                     </td>			
                 </tr>
 
                 <tr> 
                     <td> 
-                        <p>Prénom : </p> <input type="text" name="prenom" />
+                        <p>Prénom : </p> <input type="text" name="prenom" value = <?php echo $prenom; ?>>
                     </td>
                     <td> 
                         <p> Court : </p>
@@ -61,7 +72,7 @@
 
                 <tr> 
                     <td>
-                        <p>Date de naissance : </p> <input type="date" name="datenaiss" id="datenaiss   " />
+                        <p>Date de naissance : </p> <input type="date" name="datenaiss" id="datenaiss" value=<?php echo $datenaiss; ?>>
                     </td>								
                     <td> 
                         <p> Zone : </p>
@@ -85,16 +96,16 @@
 
                 <tr>	
                     <td> 
-                        <p>Mail : </p><input type="email" name="mail" />
+                        <p>Mail : </p><input type="email" name="mail" value=<?php echo $mail; ?>>
                     </td>
                     <td> 	
-                        <p>Nombre de places : </p><input type="number" name="nb_places" id="nb_places" />
+                        <p>Nombre de places : </p><input type="number" name="nb_places" id="nb_places" value=<?php echo $nb_places; ?>>
                     </td>
 
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <p>Code promo : </p><input type="text" name="code_promo"/>
+                        <p>Code promo : </p><input type="text" name="code_promo" value=<?php echo $code_promo; ?>>
                     </td>
                 </tr>
             </table>
@@ -114,15 +125,7 @@
                 && !empty($_GET['datenaiss'])
                 && !empty($_GET['nb_places'])){
 
-                    $nom = $_GET['nom'];
-                    $prenom = $_GET['prenom'];	
-                    $date_reservation = $_GET['date_reservation'];			
-                    $mail = $_GET['mail'];
-                    $zone = $_GET['zone'];
-                    $court = $_GET['court'];
-                    $datenaiss = $_GET['datenaiss'];
-                    $nb_places = $_GET['nb_places'];
-                    $code_promo = $_GET['code_promo'];
+                    
 
                     $bdd = Connect_db(); 
                     ?> <p>Ca marche</p>
