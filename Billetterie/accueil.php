@@ -31,7 +31,7 @@
             <table>
                 <tr> 
                     <td> 
-                        <p>Nom : </p><input type="text" name="nom" value = $_GET['nom']/>       <!-- TEST -->
+                        <p>Nom : </p><input type="text" name="nom" value =<?php $nom ?>/>       <!-- TEST -->
                     </td> 	
                     <td rowspan=4>	
                         <img src="./images/plan_court.jpg" alt="Plan des courts">
@@ -112,8 +112,7 @@
                 && !empty($_GET['court'])
                 && !empty($_GET['zone'])
                 && !empty($_GET['datenaiss'])
-                && !empty($_GET['nb_places'])
-                && !empty($_GET['code_promo'])){
+                && !empty($_GET['nb_places'])){
 
                     $nom = $_GET['nom'];
                     $prenom = $_GET['prenom'];	
