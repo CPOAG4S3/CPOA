@@ -145,11 +145,14 @@
                 && !empty($_GET['zone'])
                 && !empty($_GET['datenaiss'])
                 && !empty($_GET['nb_places'])){
-
                     
-
                     $bdd = Connect_db(); 
                     //S'amuser avec PHP pour tout faire marcher//
+					$stmt = $bdd->query("SELECT TYPE FROM CODE WHERE CODE = ?");
+					$stmt->setFetchMode(PDO::FETCH_ASSOC);
+					while($row = $stmt->fetch()){
+						echo $row['TYPE'],'</br>';
+					}
                     ?> 
         <?php
             } else {
