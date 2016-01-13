@@ -24,15 +24,34 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css" type="text/css">
         <?php
-            $nom = $_GET['nom'];
-            $prenom = $_GET['prenom'];	
-            $date_reservation = $_GET['date_reservation'];			
-            $mail = $_GET['mail'];
-            $zone = $_GET['zone'];
-            $court = $_GET['court'];
-            $datenaiss = $_GET['datenaiss'];
-            $nb_places = $_GET['nb_places'];
-            $code_promo = $_GET['code_promo'];
+            //INITIALISATION
+            if (isset($_GET['nom'])){
+                $nom = $_GET['nom'];
+            }
+            if (isset($_GET['prenom'])){
+                $nom = $_GET['prenom'];
+            }
+            if (isset($_GET['date_reservation'])){
+                $nom = $_GET['date_reservation'];
+            }
+            if (isset($_GET['mail'])){
+                $nom = $_GET['mail'];
+            }
+            if (isset($_GET['zone'])){
+                $nom = $_GET['zone'];
+            }
+            if (isset($_GET['court'])){
+                $nom = $_GET['court'];
+            }
+            if (isset($_GET['datenaiss'])){
+                $nom = $_GET['datenaiss'];
+            }
+            if (isset($_GET['nb_places'])){
+                $nom = $_GET['nb_places'];
+            }
+            if (isset($_GET['code_promo'])){
+                $nom = $_GET['code_promo'];
+            }
         ?>
     </head>
 
