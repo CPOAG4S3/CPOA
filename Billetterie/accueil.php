@@ -42,13 +42,13 @@
             <table>
                 <tr> 
                     <td> 
-                        <p>Nom : </p><input type="text" name="nom" value =<?php echo $nom; ?>/>       <!-- TEST -->
+                        <p>Nom : </p><input type="text" name="nom" value =<?php echo $nom; ?>>       
                     </td> 	
                     <td rowspan=4>	
-                        <img src="./images/plan_court.jpg" alt="Plan des courts">
+                        <img src="./Images/plan_court.jpg" alt="Plan des courts">
                     </td>				
                     <td>
-                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" value=<?php echo $date; ?>>
+                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" value=<?php echo $date_reservation; ?>>
                     </td>			
                 </tr>
 
@@ -59,6 +59,7 @@
                     <td> 
                         <p> Court : </p>
                         <select name="court" form = "formulaire">
+                        <option selected="selected">Court</option>
                         <option value = "Court1"> Court 1 </option>
                         <option value = "Court2"> Court 2 </option>
                         <option value = "Court3"> Court 3 </option>
@@ -77,6 +78,7 @@
                     <td> 
                         <p> Zone : </p>
                         <select name="zone" form = "formulaire" >
+                        <option selected="selected">Zone</option>
                         <option value = "A"> A </option>
                         <option value = "B"> B </option>
                         <option value = "C"> C </option>
