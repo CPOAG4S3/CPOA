@@ -3,8 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/oracle/OracleArbitreDAO.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/oracle/OracleRamasseurDAO.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/oracle/OracleMatchDAO.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/vue/AfficherMatchs.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/vue/FenetreAppli.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/IJoueurDAO.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/IMatchDAO.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/oracle/OracleJoueurDAO.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/metier/Match.java</file>
             <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/metier/main.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/metier/Ramasseur.java</file>
+            <file>file:/C:/Users/Etienne/Desktop/CPOA/Planning%20des%20matchs/src/planning/dao/IRamasseurDAO.java</file>
         </group>
     </open-files>
 </project-private>

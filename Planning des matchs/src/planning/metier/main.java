@@ -106,7 +106,7 @@ public class main {
    public static void setConnexionRamasseur(){
        try{
            dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
-           ramasseurDAO = new OracleRamasseurDAO();
+           ramasseurDAO = (IRamasseurDAO) new OracleRamasseurDAO();
            ramasseurDAO.setDataSource(dataSourceDAO);
            connexionBD = dataSourceDAO.getConnection();
            ramasseurDAO.setConnection(connexionBD);
@@ -115,7 +115,7 @@ public class main {
         }
    }
    public static void afficherListeRamasseurs(){
-       List<Ramasseur> listeRamasseurs = ramasseurDAO.getLesRamasseurs();
+        List<Ramasseur> listeRamasseurs = ramasseurDAO.getLesRamasseurs();
         listeRamasseurs.stream().forEach((ramasseur) -> {
             System.out.println(ramasseur);
         });

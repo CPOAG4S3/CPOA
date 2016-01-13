@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import planning.dao.IMatchDAO;
+import planning.metier.Joueur;
 
 import planning.metier.Match;
 
@@ -72,6 +75,43 @@ public class OracleMatchDAO implements IMatchDAO {
         if (c!=null){
             c.close();
         }
+    }
+
+    @Override
+    public List<Match> getLesMatchs(String type, String niveau, String nomCourt) {
+        List<Match> listeMatchs = null;
+        ResultSet rset = null;
+        Statement stmt = null;
+        Match matchCourant;
+          try{
+            stmt = connexionBD.createStatement();
+            listeMatchs = new ArrayList<>();
+            rset = stmt.executeQuery("SELECT * from Match");
+            while(rset.next()){ //Boucle pour chaque ligne
+                matchCourant = new Match(rset.getInt(0), rset.getDate(1), rset.getString(2), rset.getString(3), 
+                        rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8),
+                        rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12), rset.getString(13),
+                        rset.getString(14),  rset.getString(15),  rset.getString(16)); 
+                listeMatchs.add(matchCourant);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try{
+                stmt.close();
+                rset.close();
+            }catch(SQLException ex){
+                Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listeJoueurs;
+    }
+
+    @Override
+    public List<Match> getLesMatchs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     }
     
 }

@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import planning.dao.IRamasseurDAO;
-import planning.metier.Court;
 import planning.metier.Ramasseur;
 
 public class OracleRamasseurDAO implements IRamasseurDAO{
