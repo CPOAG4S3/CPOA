@@ -34,7 +34,7 @@ input,select{
     
 }
 
-p#echec{
+p.echec{
     color: red;
 }
 
