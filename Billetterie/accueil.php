@@ -129,7 +129,7 @@
         <?php
             } else {
                 ?>
-                <p>Ca marce pas</p>
+                <p>Ca marche pas</p>
         <?php
             }
         ?>
