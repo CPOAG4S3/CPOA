@@ -199,8 +199,16 @@
 						
 					}
 					
-					$prix = 40;
-					
+					$prix = 50;
+					if($type_promo=="grandPublic"){
+						$prix = $prix * $zone_promo_promo * $coef_date;
+						echo $prix;
+					}	
+					else{
+						$prix = $prix * $zone_promo_promo * $coef_date* $coef_promo;
+						echo $prix;						
+					}
+						
 					
 					
 					
