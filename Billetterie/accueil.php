@@ -12,7 +12,7 @@
 		    return $bdd;
 		}
 		catch (Exception $e) {
-		    die('Erreur : '.$e->getMessage());
+		    die('Erreur : '.$e->GETMessage());
 		}  
 	}
 	
@@ -57,7 +57,7 @@
 
 
     <body>
-        <form method="get" action="accueil.php" id = "formulaire">
+        <form method="GET" action="accueil.php" id = "formulaire">
             <table>
                 <tr> 
                     <td> 
@@ -67,7 +67,7 @@
                         <img src="./Images/plan_court.jpg" alt="Plan des courts">
                     </td>				
                     <td>
-                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" value=<?php echo $date_reservation; ?>>
+                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" min="2016-03-05" max="2016-03-13" value=<?php echo $date_reservation; ?>>
                     </td>			
                 </tr>
 
