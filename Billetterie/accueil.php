@@ -148,9 +148,8 @@
                     
                     $bdd = Connect_db(); 
                     //S'amuser avec PHP pour tout faire marcher//
-					$stmt = $bdd->query("SELECT TYPE FROM CODE WHERE CODE = ?");
-					$stmt->setFetchMode(PDO::FETCH_ASSOC);
-					while($row = $stmt->fetch()){
+					$stmt = mysql_query("SELECT TYPE FROM CODE WHERE CODE = '$code_promo'");
+					while($row = mysql_fetch_array($stmt)){
 						echo $row['TYPE'],'</br>';
 					}
                     ?> 
