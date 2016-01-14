@@ -172,7 +172,7 @@
 					}
 					
 					// promo grand public					
-					if($type_promo=="grandPublic"){
+					
 							
 						//fetch  promo de la date si type = grand public
 						$stmt = $bdd->prepare("SELECT COEF FROM REDUCTION_DATE WHERE DATE = '".$_GET['date_reservation']."'");
@@ -183,7 +183,7 @@
 						}
 						
 						//fetch  promo de la zone si type = grand public
-						
+					
 						$stmt = $bdd->prepare("SELECT ZONE FROM TABLE_ZONE WHERE BLOC = '".$_GET['zone']."'");
 						$stmt->execute();
 						while($bddZone = $stmt->fetch(PDO:: FETCH_ASSOC)){
@@ -197,7 +197,7 @@
 							$zone_promo_promo = $bddZoneCoef['COEF'];
 						}
 						
-					}
+					
 					
 					$prix = 50;
 					if($type_promo=="grandPublic"){
