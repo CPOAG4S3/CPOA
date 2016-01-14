@@ -44,8 +44,10 @@ public class main {
         setConnexionRamasseur();
         afficherListeRamasseurs();
         System.out.println("");
+        //setConnexionMatch();
+        //ajouterMatch();
         setConnexionMatch();
-        ajouterMatch();
+        afficherListeMatchs();
                 
     }
   
@@ -138,4 +140,10 @@ public class main {
         Match nouveauMatch = new Match(2, sDate, "1", "simple", "Philippe-Chatrier", "0123456", "0123457", "", "", "", "", "", "", "", "", "", "");
         matchDAO.ajouterMatch(nouveauMatch);      
     }
+   public static void afficherListeMatchs(){
+       List<Match> listeMatchs = matchDAO.getLesMatchs("simple", "16eme", "Philippe-Chartrier");
+        listeMatchs.stream().forEach((match) -> {
+            System.out.println(match);
+        });
+   }
 }

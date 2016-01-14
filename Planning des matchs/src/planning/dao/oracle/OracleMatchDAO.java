@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +79,8 @@ public class OracleMatchDAO implements IMatchDAO {
     }
 
     @Override
-    public List<Match> getLesMatchs(String type, String niveau, String nomCourt) {
+    public List<Match> getLesMatchs(String type, String niveau, String nomCourt) { /* Méhode qui retourne une liste 
+                                                                                    des matchs pour un type de match, un court et un niveau */
         List<Match> listeMatchs = null;
         ResultSet rset = null;
         Statement stmt = null;
@@ -86,12 +88,15 @@ public class OracleMatchDAO implements IMatchDAO {
           try{
             stmt = connexionBD.createStatement();
             listeMatchs = new ArrayList<>();
-            rset = stmt.executeQuery("SELECT * from Match");
+            rset = stmt.executeQuery("SELECT * FROM Match "
+                                   + "WHERE niveau = '" + niveau + "' " 
+                                   + "AND type_match = '" + type + "' "
+                                   + "AND nom_court_match = '" + nomCourt + "'");
             while(rset.next()){ //Boucle pour chaque ligne
-                matchCourant = new Match(rset.getInt(0), rset.getDate(1), rset.getString(2), rset.getString(3), 
-                        rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8),
-                        rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12), rset.getString(13),
-                        rset.getString(14),  rset.getString(15),  rset.getString(16)); 
+                matchCourant = new Match(rset.getInt(1), rset.getDate(2), rset.getString(3), rset.getString(4), 
+                        rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(12), rset.getString(13),
+                        rset.getString(14), rset.getString(15), rset.getString(16), rset.getString(17), rset.getString(18),
+                        rset.getString(19),  rset.getString(20),  rset.getString(21)); 
                 listeMatchs.add(matchCourant);
             }
         } catch (SQLException ex) {
@@ -105,13 +110,6 @@ public class OracleMatchDAO implements IMatchDAO {
                 Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return listeJoueurs;
-    }
-
-    @Override
-    public List<Match> getLesMatchs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    }
-    
+        return listeMatchs;
+    }    
 }
