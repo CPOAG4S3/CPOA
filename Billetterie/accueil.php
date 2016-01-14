@@ -78,7 +78,7 @@
                     <td> 
                         <p> Court : </p>
                         <select name="court" form = "formulaire">
-                        <option selected="selected">Court</option>
+                        <option selected="selected" value="default">Court</option>
                         <option value = "Court1"> Court 1 </option>
                         <option value = "Court2"> Court 2 </option>
                         <option value = "Court3"> Court 3 </option>
@@ -97,7 +97,7 @@
                     <td> 
                         <p> Zone : </p>
                         <select name="zone" form = "formulaire" >
-                        <option selected="selected">Zone</option>
+                        <option selected="selected" value="default">Zone</option>
                         <option value = "A"> A </option>
                         <option value = "B"> B </option>
                         <option value = "C"> C </option>
@@ -120,7 +120,7 @@
                         <p>Mail : </p><input type="email" name="mail" value=<?php echo $mail; ?>>
                     </td>
                     <td> 	
-                        <p>Nombre de places : </p><input type="number" name="nb_places" id="nb_places" value=<?php echo $nb_places; ?>>
+                        <p>Nombre de places : </p><input type="number" min="1" name="nb_places" id="nb_places" value=<?php echo $nb_places; ?>>
                     </td>
 
                 </tr>
@@ -144,18 +144,76 @@
                 && !empty($_GET['court'])
                 && !empty($_GET['zone'])
                 && !empty($_GET['datenaiss'])
-                && !empty($_GET['nb_places'])){
+                && !empty($_GET['nb_places'])
+				&& $_GET['zone'] != 'default'
+				&& $_GET['court'] != 'default'){
                     
                     $bdd = Connect_db(); 
                     //S'amuser avec PHP pour tout faire marcher//
-					$stmt = mysql_query("SELECT TYPE FROM CODE WHERE CODE = '$code_promo'");
-					while($row = mysql_fetch_array($stmt)){
-						echo $row['TYPE'],'</br>';
+					
+					// fetch type de code
+					$stmt = $bdd->prepare("SELECT TYPE FROM CODE WHERE CODE = '".$code_promo."'");
+					$stmt->execute();
+					$type_promo="grandPublic";
+					while($bddType = $stmt->fetch(PDO:: FETCH_ASSOC)){
+						
+						if (!empty($bddType)){
+							$type_promo = $bddType['TYPE'];
+						}
 					}
-                    ?> 
-        <?php
+					echo $type_promo,'</br>';
+					
+					// fetch coef du type
+					$stmt = $bdd->prepare("SELECT COEF FROM REDUCTION WHERE PROMO = '".$type_promo."'");
+					$stmt->execute();
+					while($bddCodeCoef = $stmt->fetch(PDO:: FETCH_ASSOC)){
+						echo $bddCodeCoef['COEF'],'</br>';
+						$coef_promo = $bddCodeCoef['COEF'];
+					}
+					
+					// promo grand public					
+					if($type_promo=="grandPublic"){
+							
+						//fetch  promo de la date si type = grand public
+						$stmt = $bdd->prepare("SELECT COEF FROM REDUCTION_DATE WHERE DATE = '".$_GET['date_reservation']."'");
+						$stmt->execute();
+						while($bddDate = $stmt->fetch(PDO:: FETCH_ASSOC)){
+							echo $bddDate['COEF'],'</br>';
+							$coef_date = $bddDate['COEF'];
+						}
+						
+						//fetch  promo de la zone si type = grand public
+						
+						$stmt = $bdd->prepare("SELECT ZONE FROM TABLE_ZONE WHERE BLOC = '".$_GET['zone']."'");
+						$stmt->execute();
+						while($bddZone = $stmt->fetch(PDO:: FETCH_ASSOC)){
+							echo $bddZone['ZONE'],'</br>';
+							$zone_bloc = $bddZone['ZONE'];
+						}
+						$stmt = $bdd->prepare("SELECT COEF FROM REDUCTION WHERE PROMO = '".$zone_bloc."'");
+						$stmt->execute();
+						while($bddZoneCoef = $stmt->fetch(PDO:: FETCH_ASSOC)){
+							echo $bddZoneCoef['COEF'],'</br>';
+							$zone_promo_promo = $bddZoneCoef['COEF'];
+						}
+						
+					}
+					
+					$prix = 40;
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					$bdd = null;
+       
             } else {
-                ?>
+        ?>
+				
                 <p class="echec">Merci de remplir tous les champs avant de calculer le prix</p>
         <?php
             }
