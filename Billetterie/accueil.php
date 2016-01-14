@@ -150,11 +150,6 @@
                     
                     $bdd = Connect_db(); 
                     //S'amuser avec PHP pour tout faire marcher//
-<<<<<<< HEAD
-					$stmt = mysql_query("SELECT TYPE FROM CODE WHERE CODE = '".$code_promo."'");
-					while($row = mysql_fetch_array($stmt)){
-						echo $row['TYPE'],'</br>';
-=======
 					
 					// fetch type de code
 					$stmt = $bdd->prepare("SELECT TYPE FROM CODE WHERE CODE = '".$code_promo."'");
@@ -165,7 +160,6 @@
 						if (!empty($bddType)){
 							$type_promo = $bddType['TYPE'];
 						}
->>>>>>> origin/master
 					}
 					echo $type_promo,'</br>';
 					
