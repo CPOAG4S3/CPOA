@@ -96,9 +96,11 @@
                     </td>								
                     <td> 
                         <p> Zone : </p>
+                        <select name="zone" form = "formulaire" >
                         <?php
                             require_once("select_zone.php");
                         ?>
+                        </select>
                     </td>
                 </tr>	
 

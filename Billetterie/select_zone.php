@@ -1,4 +1,15 @@
 <?php
+if ($_GET['zone'] == 'default'){
+    ?>
+    <option value="default" selected="selected">Zone</option>
+    <?php
+}else{
+    ?>
+    <option value="default">Zone</option>
+<?php
+}
+
+
 if ($_GET['zone'] == 'A'){
 ?>
     <option value = "A" selected="selected"> A </option>
