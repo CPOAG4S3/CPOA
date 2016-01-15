@@ -78,13 +78,9 @@
                     <td> 
                         <p> Court : </p>
                         <select name="court" form = "formulaire">
-                        <option selected="selected" value="default">Court</option>
-                        <option value = "Court1"> Court 1 </option>
-                        <option value = "Court2"> Court 2 </option>
-                        <option value = "Court3"> Court 3 </option>
-                        <option value = "Court4"> Court 4 </option>
-                        <option value = "Court5"> Court 5 </option>
-                        <option value = "Court6"> Court 6 </option> 
+                        <?php
+                            require_once("select_court.php");
+                        ?>
                         </select>
                     </td>
                 </tr>		
