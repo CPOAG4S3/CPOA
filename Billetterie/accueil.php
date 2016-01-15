@@ -96,21 +96,9 @@
                     </td>								
                     <td> 
                         <p> Zone : </p>
-                        <select name="zone" form = "formulaire" >
-                        <option selected="selected" value="default">Zone</option>
-                        <option value = "A"> A </option>
-                        <option value = "B"> B </option>
-                        <option value = "C"> C </option>
-                        <option value = "D"> D </option>
-                        <option value = "E"> E </option>
-                        <option value = "F"> F </option>
-                        <option value = "G"> G </option>
-                        <option value = "H"> H </option>
-                        <option value = "I"> I </option>
-                        <option value = "J"> J </option>
-                        <option value = "K"> K </option>
-                        <option value = "L"> L </option>
-                        </select>
+                        <?php
+                            require_once("select_zone.php");
+                        ?>
                     </td>
                 </tr>	
 
