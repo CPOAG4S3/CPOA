@@ -29,12 +29,6 @@ if (!empty($_GET['nom'])
 						$coef_promo = $bddCodeCoef['COEF'];
 					}
                     
-                    //Calcul du nombre de places restantes
-                    $stmt = $bdd->prepare("SELECT DISPO FROM BILLETS WHERE TYPE = '".$type_promo."'");
-					$stmt->execute();
-					while($bddCodeCoef = $stmt->fetch(PDO:: FETCH_ASSOC)){
-						$coef_promo = $bddCodeCoef['COEF'];
-					}
 					
 					// promo grand public					
 					
@@ -66,7 +60,7 @@ if (!empty($_GET['nom'])
                     $stmt = $bdd->prepare("SELECT DISPO FROM BILLETS WHERE TYPE = '".$type_promo."' AND DATE = '".$_GET['date_reservation']."' AND ZONE = '".$zone_bloc."'");
 					$stmt->execute();
 					while($bddNbPlaces = $stmt->fetch(PDO:: FETCH_ASSOC)){
-						$nb_places_restantes = $bddNbPlaces['COEF'];
+						$nb_places_restantes = $bddNbPlaces['DISPO'];
                         echo '<p>Il reste '.$nb_places_restantes.' places correspondant à votre commande.</p>';
 					}
         
