@@ -5,17 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Match {
-   private int numMatch;
-   private Date horaire;
-   private String niveau, typeMatch, nomCourtMatch;
+   private int numMatch = -1;
+   private String horaire = null;
+   private String niveau = "", typeMatch = "", nomCourtMatch = "";
    private String participant1 = "", participant2 = "", equipe1 = "", equipe2 = "";
-   private String joueurGagnant, equipeGagnante;
-   private String equipeRamasseur1, equipeRamasseur2;
-   private String arbitreLigne1, arbitreLigne2, arbitreLigne3, arbitreLigne4, arbitreLigne5, arbitreLigne6;
-   private String arbitreFilet, arbitreChaise;
+   private String joueurGagnant = "", equipeGagnante = "";
+   private String equipeRamasseur1 = "", equipeRamasseur2 = "";
+   private String arbitreLigne1 = "", arbitreLigne2 = "", arbitreLigne3 = "", arbitreLigne4 = "", arbitreLigne5 = "", arbitreLigne6 = "";
+   private String arbitreFilet = "", arbitreChaise = "";
 
    //Constructeur pour ajouter un match simple
-    public Match(int numMatch, Date horaire, String niveau, String typeMatch, String nomCourtMatch, String membre1, String membre2, String equipeRamasseur1, String equipeRamasseur2, String arbitreLigne1, String arbitreLigne2, String arbitreLigne3, String arbitreLigne4, String arbitreLigne5, String arbitreLigne6, String arbitreFilet, String arbitreChaise) {
+    public Match(int numMatch, String horaire, String niveau, String typeMatch, String nomCourtMatch, String membre1, String membre2, String equipeRamasseur1, String equipeRamasseur2, String arbitreLigne1, String arbitreLigne2, String arbitreLigne3, String arbitreLigne4, String arbitreLigne5, String arbitreLigne6, String arbitreFilet, String arbitreChaise) {
         this.numMatch = numMatch;
         this.horaire = horaire;
         this.niveau = niveau;
@@ -40,12 +40,22 @@ public class Match {
             this.equipe2 = membre2;
         }
     }
+    
+    public Match(int numMatch, String horaire, String typeMatch, String membre1, String membre2, String equ1, String equ2){
+        this.numMatch = numMatch;
+        this.horaire = horaire;
+        this.typeMatch = typeMatch;
+        this.participant1 = membre1;
+        this.participant2 = membre2;
+        this.equipe1 = equ1;
+        this.equipe2 = equ2;
+    }
 
+    public String getHoraire() {
+        return horaire;
+    }
     public int getNumMatch() {
         return numMatch;
-    }
-    public Date getHoraire() {
-        return horaire;
     }
     public String getNiveau() {
         return niveau;

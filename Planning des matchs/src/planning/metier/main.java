@@ -22,6 +22,7 @@ import planning.dao.oracle.OracleRamasseurDAO;
 
 public class main {
     private static OracleDataSourceDAO dataSourceDAO;
+    private static OracleDataSourceDAO dataSourceDAO2;
     private static IJoueurDAO joueurDAO;
     private static IArbitreDAO arbitreDAO;
     private static ICourtDAO courtDAO;
@@ -134,12 +135,11 @@ public class main {
         catch(SQLException ex){
         }
     }
-    private static void ajouterMatch() {
+    /*private static void ajouterMatch() {
         //Avant, prendre en compte la limite max des arbitre
-        java.sql.Date sDate = new java.sql.Date(System.currentTimeMillis());
-        Match nouveauMatch = new Match(2, sDate, "1", "simple", "Philippe-Chatrier", "0123456", "0123457", "", "", "", "", "", "", "", "", "", "");
+        Match nouveauMatch = new Match(2, "", "1", "simple", "Philippe-Chatrier", "0123456", "0123457", "", "", "", "", "", "", "", "", "", "");
         matchDAO.ajouterMatch(nouveauMatch);      
-    }
+    }*/
    public static void afficherListeMatchs(){
        List<Match> listeMatchs = matchDAO.getLesMatchs("simple", "16eme", "Philippe-Chartrier");
         listeMatchs.stream().forEach((match) -> {

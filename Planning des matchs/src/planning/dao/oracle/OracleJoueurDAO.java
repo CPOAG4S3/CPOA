@@ -60,5 +60,30 @@ public class OracleJoueurDAO implements IJoueurDAO{
         }
         return listeJoueurs;
     }
+    
+    @Override
+    public Joueur OracleJoueurDAO(String numJoueur) {
+        ResultSet rset = null;
+        Statement stmt = null;
+        Joueur joueurCourant = null;
+          try{
+            stmt = connexionBD.createStatement();
+            rset = stmt.executeQuery("SELECT * from Joueur WHERE num_licence = '" + numJoueur + "'");
+            while(rset.next()){ 
+                joueurCourant = new Joueur(rset.getString(1), rset.getString(2), rset.getString(3)); //Crée un objet joueur à partir des données de la table SQL
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try{
+                stmt.close();
+                rset.close();
+            }catch(SQLException ex){
+                Logger.getLogger(OracleJoueurDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return joueurCourant;
+    }
 
 }

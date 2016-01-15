@@ -3,20 +3,26 @@ package vue;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import planning.dao.IJoueurDAO;
 import planning.dao.oracle.OracleDataSourceDAO;
 import planning.dao.IMatchDAO;
+import planning.dao.oracle.OracleJoueurDAO;
 import planning.dao.oracle.OracleMatchDAO;
 import planning.metier.Match;
 
 
 public class AfficherMatchs extends javax.swing.JFrame {
     private static OracleDataSourceDAO dataSourceDAO;
+    private static OracleDataSourceDAO dataSourceDAO2;
     private static IMatchDAO matchDAO;
+    private static IJoueurDAO joueurDAO;
     private static Connection connexionBD;
     
-    private static String[] stringMatchs;
+    private static String[] stringMatchsSimpleCent;
+    private static String[] stringMatchsSimpleAnnexe = {""};
+    private static String[] stringMatchsSimpleEnt = {""};
     
-    public static void remplirListe(String typeMatch, String niveau, String nomCourt) {
+    public static String[] remplirListe(String typeMatch, String niveau, String nomCourt) { //Méthode pour afficher la liste des matchs prévus.
         try{
            dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
            matchDAO = new OracleMatchDAO();
@@ -27,12 +33,19 @@ public class AfficherMatchs extends javax.swing.JFrame {
         catch(SQLException ex){
         }
         List<Match> listeMatchs = matchDAO.getLesMatchs(typeMatch, niveau, nomCourt);
-        stringMatchs = new String[listeMatchs.size()];
+        String stringMatchs[] = new String[listeMatchs.size()];
         int i = 0;
         for (Match m : listeMatchs){
-            stringMatchs[i] = "" + m.getParticipant1()+ " vs " + m.getParticipant2()+ " Le " + m.getHoraire();
+            setConnexionJoueur();
+            stringMatchs[i] = "" 
+                    + joueurDAO.OracleJoueurDAO(m.getParticipant1()).getPrenom() + " "
+                    + joueurDAO.OracleJoueurDAO(m.getParticipant1()).getNom() + " vs " 
+                    + joueurDAO.OracleJoueurDAO(m.getParticipant2()).getPrenom() + " "
+                    + joueurDAO.OracleJoueurDAO(m.getParticipant2()).getNom() + " Le "
+                    + m.getHoraire();
             i++;
         }
+        return stringMatchs;
     }
     
     public AfficherMatchs() {
@@ -44,6 +57,7 @@ public class AfficherMatchs extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelActMatchs = new javax.swing.JPanel();
         jPanelActSimple = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -54,6 +68,7 @@ public class AfficherMatchs extends javax.swing.JFrame {
         jListSimpleCentral = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemPtJoueurs = new javax.swing.JMenuItem();
@@ -68,13 +83,13 @@ public class AfficherMatchs extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Tournoi actuellement en ");
+        jLabel2.setText("Liste des matchs de ");
 
         jTextFieldNiveauTournoi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextFieldNiveauTournoi.setText("16ème de finale");
 
         jListSimpleCentral.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = stringMatchs;
+            String[] strings = stringMatchsSimpleCent;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -86,15 +101,14 @@ public class AfficherMatchs extends javax.swing.JFrame {
             jPanelCourtCentSimpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCourtCentSimpleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE))
         );
         jPanelCourtCentSimpleLayout.setVerticalGroup(
             jPanelCourtCentSimpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCourtCentSimpleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedPaneActSimple.addTab("Court Central Philippe-Chartier", jPanelCourtCentSimple);
@@ -125,6 +139,9 @@ public class AfficherMatchs extends javax.swing.JFrame {
 
         jTabbedPaneActSimple.addTab("Court d'entrainement n°1", jPanel4);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("pour le tournoi Simple");
+
         javax.swing.GroupLayout jPanelActSimpleLayout = new javax.swing.GroupLayout(jPanelActSimple);
         jPanelActSimple.setLayout(jPanelActSimpleLayout);
         jPanelActSimpleLayout.setHorizontalGroup(
@@ -137,7 +154,9 @@ public class AfficherMatchs extends javax.swing.JFrame {
                     .addGroup(jPanelActSimpleLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNiveauTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldNiveauTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3))
                     .addComponent(jTabbedPaneActSimple, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -146,12 +165,34 @@ public class AfficherMatchs extends javax.swing.JFrame {
             .addGroup(jPanelActSimpleLayout.createSequentialGroup()
                 .addGroup(jPanelActSimpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldNiveauTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNiveauTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPaneActSimple, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(411, 411, 411))
+        );
+
+        javax.swing.GroupLayout jPanelActMatchsLayout = new javax.swing.GroupLayout(jPanelActMatchs);
+        jPanelActMatchs.setLayout(jPanelActMatchsLayout);
+        jPanelActMatchsLayout.setHorizontalGroup(
+            jPanelActMatchsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 731, Short.MAX_VALUE)
+            .addGroup(jPanelActMatchsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelActMatchsLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanelActSimple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanelActMatchsLayout.setVerticalGroup(
+            jPanelActMatchsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(jPanelActMatchsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelActMatchsLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanelActSimple, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jMenu1.setText("Mode");
@@ -206,16 +247,15 @@ public class AfficherMatchs extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelActSimple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanelActMatchs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelActSimple, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addComponent(jPanelActMatchs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 442, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,7 +270,7 @@ public class AfficherMatchs extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemModDoubleActionPerformed
 
     private void jMenuItemActSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemActSimpleActionPerformed
-        jPanel1.add(jPanelActSimple);
+        //.add(jPanelActSimple);
     }//GEN-LAST:event_jMenuItemActSimpleActionPerformed
 
     public static void main(String args[]) {
@@ -255,18 +295,31 @@ public class AfficherMatchs extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AfficherMatchs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        remplirListe("simple", "16eme", "Philippe-Chartrier");
+        stringMatchsSimpleCent = remplirListe("simple", "16eme", "Philippe-Chatrier");
+        //stringMatchsSimpleAnnexe = remplirListe("simple", "16eme", "Suzanne-Lenglen");
+        //stringMatchsSimpleEnt = remplirListe("simple", "16eme", "n°");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AfficherMatchs().setVisible(true);
             }
         });
     }
-
+    public static void setConnexionJoueur(){
+      try{
+          dataSourceDAO2 = OracleDataSourceDAO.getOracleDataSourceDAO();
+          joueurDAO = new OracleJoueurDAO();
+          joueurDAO.setDataSource(dataSourceDAO2);
+          connexionBD = dataSourceDAO.getConnection();
+          joueurDAO.setConnection(connexionBD);
+       }
+       catch(SQLException ex){
+       }
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jListSimpleCentral;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -280,6 +333,7 @@ public class AfficherMatchs extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemPtResponsable;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelActMatchs;
     private javax.swing.JPanel jPanelActSimple;
     private javax.swing.JPanel jPanelCourtCentSimple;
     private javax.swing.JScrollPane jScrollPane1;

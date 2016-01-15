@@ -88,15 +88,13 @@ public class OracleMatchDAO implements IMatchDAO {
           try{
             stmt = connexionBD.createStatement();
             listeMatchs = new ArrayList<>();
-            rset = stmt.executeQuery("SELECT * FROM Match "
+            rset = stmt.executeQuery("SELECT num_match, tranche_horaire_match, type_Match, participant1, participant2, equipe1, equipe2 FROM Match "
                                    + "WHERE niveau = '" + niveau + "' " 
                                    + "AND type_match = '" + type + "' "
                                    + "AND nom_court_match = '" + nomCourt + "'");
             while(rset.next()){ //Boucle pour chaque ligne
-                matchCourant = new Match(rset.getInt(1), rset.getDate(2), rset.getString(3), rset.getString(4), 
-                        rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(12), rset.getString(13),
-                        rset.getString(14), rset.getString(15), rset.getString(16), rset.getString(17), rset.getString(18),
-                        rset.getString(19),  rset.getString(20),  rset.getString(21)); 
+                matchCourant = new Match(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), 
+                        rset.getString(5), rset.getString(6), rset.getString(7));
                 listeMatchs.add(matchCourant);
             }
         } catch (SQLException ex) {

@@ -12,4 +12,5 @@ public interface IJoueurDAO {
     public void setDataSource(DataSource ds);
     public void setConnection(Connection c);
     public void closeConnection(Connection c) throws SQLException;
+    public Joueur OracleJoueurDAO(String numJoueur);
 }
