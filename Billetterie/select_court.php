@@ -1,16 +1,16 @@
 <?php
-if ($_GET['zone'] == 'default'){
+if ($_GET['court'] == 'default'){
     ?>
-    <option value="default" selected="selected">Zone</option>
+    <option value="default" selected="selected">Court</option>
     <?php
 }else{
     ?>
-    <option value="default">Zone</option>
+    <option value="default">Court</option>
 <?php
 }
 
 
-if ($_GET['zone'] == 'Court1'){
+if ($_GET['court'] == 'Court1'){
 ?>
     <option value = "Court1" selected="selected"> Court 1 </option>
     <?php
@@ -20,7 +20,7 @@ if ($_GET['zone'] == 'Court1'){
 <?php
 }
 
-if ($_GET['zone'] == 'Court2'){
+if ($_GET['court'] == 'Court2'){
 ?>
     <option value = "Court2" selected="selected"> Court 2 </option>
     <?php
@@ -32,7 +32,7 @@ if ($_GET['zone'] == 'Court2'){
 
 
 
-if ($_GET['zone'] == 'Court3'){
+if ($_GET['court'] == 'Court3'){
 ?>
     <option value = "Court3" selected="selected"> Court 3 </option>
     <?php
@@ -44,7 +44,7 @@ if ($_GET['zone'] == 'Court3'){
 
 
 
-if ($_GET['zone'] == 'Court4'){
+if ($_GET['court'] == 'Court4'){
 ?>
     <option value = "Court4" selected="selected"> Court 4 </option>
     <?php
@@ -56,7 +56,7 @@ if ($_GET['zone'] == 'Court4'){
 
 
 
-if ($_GET['zone'] == 'Court5'){
+if ($_GET['court'] == 'Court5'){
 ?>
     <option value = "Court5" selected="selected"> Court 5 </option>
     <?php
@@ -68,7 +68,7 @@ if ($_GET['zone'] == 'Court5'){
 
 
 
-if ($_GET['zone'] == 'Court6'){
+if ($_GET['court'] == 'Court6'){
 ?>
     <option value = "Court6" selected="selected"> Court 6 </option>
     <?php
