@@ -1,5 +1,4 @@
 <?php
-echo $_GET['court'];
 if ($_GET['court'] == 'default'){
     ?>
     <option value="default" selected="selected">Court</option>
@@ -78,9 +77,5 @@ if ($_GET['court'] == 'Court6'){
     <option value = "Court6"> Court 6 </option>
 <?php
 }
-
-
-
-
 ?>
 

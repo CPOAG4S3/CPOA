@@ -20,8 +20,6 @@ if ($_GET['zone'] == 'A'){
 <?php
 }
 
-
-
 if ($_GET['zone'] == 'B'){
 ?>
     <option value = "B" selected="selected"> B </option>
