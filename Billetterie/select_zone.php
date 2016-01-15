@@ -10,7 +10,7 @@ if ($_GET['zone'] == 'A'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'B'){
 ?>
     <option value = "B" selected="selected"> B </option>
@@ -22,7 +22,7 @@ if ($_GET['zone'] == 'B'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'C'){
 ?>
     <option value = "C" selected="selected"> C </option>
@@ -34,7 +34,7 @@ if ($_GET['zone'] == 'C'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'D'){
 ?>
     <option value = "D" selected="selected"> D </option>
@@ -46,7 +46,7 @@ if ($_GET['zone'] == 'D'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'E'){
 ?>
     <option value = "E" selected="selected"> E </option>
@@ -58,7 +58,7 @@ if ($_GET['zone'] == 'E'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'F'){
 ?>
     <option value = "F" selected="selected"> F </option>
@@ -70,7 +70,7 @@ if ($_GET['zone'] == 'F'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'G'){
 ?>
     <option value = "G" selected="selected"> G </option>
@@ -82,7 +82,7 @@ if ($_GET['zone'] == 'G'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'H'){
 ?>
     <option value = "H" selected="selected"> H </option>
@@ -94,7 +94,7 @@ if ($_GET['zone'] == 'H'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'I'){
 ?>
     <option value = "I" selected="selected"> I </option>
@@ -106,7 +106,7 @@ if ($_GET['zone'] == 'I'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'J'){
 ?>
     <option value = "J" selected="selected"> J </option>
@@ -118,7 +118,7 @@ if ($_GET['zone'] == 'J'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'K'){
 ?>
     <option value = "K" selected="selected"> K </option>
@@ -130,7 +130,7 @@ if ($_GET['zone'] == 'K'){
 }
 
 
-<?php
+
 if ($_GET['zone'] == 'L'){
 ?>
     <option value = "L" selected="selected"> L </option>
