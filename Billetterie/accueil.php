@@ -52,6 +52,9 @@
             if (isset($_GET['code_promo'])){
                 $code_promo = $_GET['code_promo'];
             }
+            if (isset($_GET['payer'])){
+                $code_promo = $_GET['payer'];
+            }
         ?>
     </head>
 
@@ -124,10 +127,15 @@
 
         <?php
             require_once("calcul_prix.php");
-        ?>
-
-        <a href="paiement.html"> 
-            <input type="submit" value="Payer" id="redirect"> 
-        </a>
+        
+    
+               /*IF APPUI SUR LE BOUTON DE RESERVATION (utilisation d'un attribut "payer" ?) ET PRIX > 0
+                    UPDATE TABLE BILLETS SET VENDUS = VENDUS + $nb_places
+                    AFFICHER BOUTON PAIEMENT QUI REDIRIGE SUR paiement.html
+                ELSE
+                    AFFICHER BOUTON RESERVATION */
+                
+            ?>
+        </form>
     </body>
 </html>

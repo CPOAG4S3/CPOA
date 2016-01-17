@@ -1,0 +1,9 @@
+BEGIN 
+	SET NEW.DISPO = NEW.TOTAL;
+END
+
+----
+
+Table : BILLETS
+Moment : BEFORE
+Événement : INSERT
