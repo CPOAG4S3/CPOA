@@ -127,8 +127,7 @@
 
         <?php
             require_once("calcul_prix.php");
-        
-    
+
                /*IF APPUI SUR LE BOUTON DE RESERVATION (utilisation d'un attribut "payer" ?) ET PRIX > 0
                     UPDATE TABLE BILLETS SET VENDUS = VENDUS + $nb_places
                     AFFICHER BOUTON PAIEMENT QUI REDIRIGE SUR paiement.html
