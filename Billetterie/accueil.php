@@ -22,6 +22,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css" type="text/css">
         <?php
             //INITIALISATION
@@ -54,6 +55,11 @@
             }
             if (isset($_GET['payer'])){
                 $code_promo = $_GET['payer'];
+            }
+            if (isset($_GET['reservation'])){
+                $reservation = $_GET['reservation'];
+            } else {
+                $reservation = 'false';  
             }
         ?>
     </head>
@@ -126,15 +132,133 @@
         </form>
 
         <?php
-            require_once("calcul_prix.php");
+            if (!empty($_GET['nom'])
+                && !empty($_GET['prenom'])
+                && !empty($_GET['date_reservation']) 
+                && !empty($_GET['mail'])
+                && !empty($_GET['court'])
+                && !empty($_GET['zone'])
+                && !empty($_GET['datenaiss'])
+                && !empty($_GET['nb_places'])
+				&& $_GET['zone'] != 'default'
+				&& $_GET['court'] != 'default'){
+                    
+                    $bdd = Connect_db(); 
+					
+					// fetch type de code
+					$stmt = $bdd->prepare("SELECT TYPE FROM CODE WHERE CODE = '".$code_promo."'");
+					$stmt->execute();
+					$type_promo="grandPublic";
+					while($bddType = $stmt->fetch(PDO:: FETCH_ASSOC)){
+						if (!empty($bddType)){
+							$type_promo = $bddType['TYPE'];
+						}
+					}
+					
+					// fetch coef du type
+					$stmt = $bdd->prepare("SELECT COEF FROM REDUCTION WHERE PROMO = '".$type_promo."'");
+					$stmt->execute();
+					while($bddCodeCoef = $stmt->fetch(PDO:: FETCH_ASSOC)){
+						$coef_promo = $bddCodeCoef['COEF'];
+					}
+                    
+					
+					// promo grand public					
+					
+				    $coef_date = 0;
+                    //fetch  promo de la date si type = grand public
+                    $stmt = $bdd->prepare("SELECT COEF FROM REDUCTION_DATE WHERE DATE = '".$_GET['date_reservation']."'");
+                    $stmt->execute();
+                    while($bddDate = $stmt->fetch(PDO:: FETCH_ASSOC)){
+                        if (!empty($bddDate)){
+                            $coef_date = $bddDate['COEF'];
+                        }
+                        
+                    }
 
-               /*IF APPUI SUR LE BOUTON DE RESERVATION (utilisation d'un attribut "payer" ?) ET PRIX > 0
-                    UPDATE TABLE BILLETS SET VENDUS = VENDUS + $nb_places
-                    AFFICHER BOUTON PAIEMENT QUI REDIRIGE SUR paiement.html
-                ELSE
-                    AFFICHER BOUTON RESERVATION */
-                
-            ?>
+                    //fetch  promo de la zone si type = grand public
+
+                    $stmt = $bdd->prepare("SELECT ZONE FROM TABLE_ZONE WHERE BLOC = '".$_GET['zone']."'");
+                    $stmt->execute();
+                    while($bddZone = $stmt->fetch(PDO:: FETCH_ASSOC)){
+                        $zone_bloc = $bddZone['ZONE'];
+                    }
+                    $stmt = $bdd->prepare("SELECT COEF FROM REDUCTION WHERE PROMO = '".$zone_bloc."'");
+                    $stmt->execute();
+                    while($bddZoneCoef = $stmt->fetch(PDO:: FETCH_ASSOC)){
+                        $zone_promo_promo = $bddZoneCoef['COEF'];
+                    }
+
+                    //Calcul du nombre de places restantes
+                    $stmt = $bdd->prepare("SELECT DISPO FROM BILLETS WHERE TYPE = '".$type_promo."' AND DATE = '".$date_reservation."' AND ZONE = '".$zone_bloc."'");
+					$stmt->execute();
+					while($bddNbPlaces = $stmt->fetch(PDO:: FETCH_ASSOC)){
+						$nb_places_restantes = $bddNbPlaces['DISPO'];
+                        echo '<p>Il reste '.$nb_places_restantes.' places correspondant à votre commande.</p>';
+					}
+        
+                $prix = 50;
+                $bdd->connection = null;
+                if (!empty($coef_date) && $coef_date > 0){
+                    if($type_promo=="grandPublic"){
+                        $prix = $prix * $zone_promo_promo * $coef_date * $_GET['nb_places'];
+                        echo '<p class="affichage_prix">Coût total : '.$prix.' €</p>';						
+                    }	
+                    else{
+                        $prix = $prix * $zone_promo_promo * $coef_date * $coef_promo * $_GET['nb_places'];
+                        echo '<p class="affichage_prix">Coût total : '.$prix.' €</p>';						
+                    }
+                } else {
+                    echo '<p class="echec">Merci de sélectionner une date valable (entre le 5 et le 13 mars 2016)</p>';
+                }	
+       
+            } else {	
+                echo '<p class="echec">Merci de remplir tous les champs avant de calculer le prix</p>';
+            }
+            
+            
+            
+
+
+
+
+
+
+    if (isset($prix) && isset($nb_places_restantes) && $nb_places<=$nb_places_restantes){
+            echo'<a href=accueil.php?nom='.$nom.'&date_reservation='.$_GET['date_reservation'].'&prenom='.$_GET['prenom'].'&court='.$_GET['court'].'&datenaiss='.$_GET['datenaiss'].'&zone='.$_GET['zone'].'&mail='.$_GET['mail'].'&nb_places='.$_GET['nb_places'].'&code_promo='.$_GET['code_promo'].'&reservation=true>Réservation</a>';
+    }
+
+        if ($reservation == 'true'){
+            $bdd = Connect_db(); 
+            $stmt = $bdd->prepare("SELECT DISPO 
+                                    FROM BILLETS 
+                                    WHERE TYPE = '".$type_promo."' 
+                                    AND DATE = '".$date_reservation."' 
+                                    AND ZONE = '".$zone_bloc."'");
+            $stmt->execute();
+            while($bddNbPlaces = $stmt->fetch(PDO:: FETCH_ASSOC)){
+                $nb_places_restantes = $bddNbPlaces['DISPO'];
+            }
+
+
+            
+            if ($nb_places<=$nb_places_restantes){
+                $stmt = $bdd->prepare("UPDATE BILLETS
+                                    SET VENDU = VENDU + '".$nb_places."'
+                                    WHERE TYPE = '".$type_promo."' 
+                                    AND DATE = '".$date_reservation."' 
+                                    AND ZONE = '".$zone_bloc."'");
+                $stmt->execute();
+                header('Location: http://iutdoua-webetu.univ-lyon1.fr/~p1400208/CPOA/Billetterie/paiement.html');
+                exit;
+            } else {
+                ?>
+                    <p>Il n'y a pas assez de places pour ces critères.</p>
+                <?php
+            }
+            $bdd->connection = null;
+        }
+        ?>
         </form>
     </body>
 </html>
