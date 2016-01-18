@@ -73,7 +73,7 @@
                         <p>Nom : </p><input type="text" name="nom" value =<?php echo $nom; ?>>       
                     </td> 	
                     <td rowspan=4>	
-                        <img src="./Images/plan_court.jpg" alt="Plan des courts">
+                        <img src="./Images/plan_court.png" alt="Plan des courts">
                     </td>				
                     <td>
                         <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" min="2016-03-05" max="2016-03-13" value=<?php echo $date_reservation; ?>>
@@ -190,7 +190,7 @@
                     }
 
                     //Calcul du nombre de places restantes
-                    $stmt = $bdd->prepare("SELECT DISPO FROM BILLETS WHERE TYPE = '".$type_promo."' AND DATE = '".$date_reservation."' AND ZONE = '".$zone_bloc."'");
+                    $stmt = $bdd->prepare("SELECT DISPO FROM BILLETS WHERE TYPE = '".$type_promo."' AND DATE = '".$date_reservation."' AND ZONE = '".$zone_bloc."' AND COURT = '".$court."'");
 					$stmt->execute();
 					while($bddNbPlaces = $stmt->fetch(PDO:: FETCH_ASSOC)){
 						$nb_places_restantes = $bddNbPlaces['DISPO'];
@@ -224,8 +224,13 @@
 
 
 
-    if (isset($prix) && isset($nb_places_restantes) && $nb_places<=$nb_places_restantes){
+    if (isset($prix) && isset($nb_places_restantes)){
+        if ($nb_places<=$nb_places_restantes){
             echo'<a href=accueil.php?nom='.$nom.'&date_reservation='.$_GET['date_reservation'].'&prenom='.$_GET['prenom'].'&court='.$_GET['court'].'&datenaiss='.$_GET['datenaiss'].'&zone='.$_GET['zone'].'&mail='.$_GET['mail'].'&nb_places='.$_GET['nb_places'].'&code_promo='.$_GET['code_promo'].'&reservation=true>Réservation</a>';
+        } else {
+            echo '<p class="echec">Il n\'y a pas assez de places pour ces critères</p>';
+        }
+            
     }
 
         if ($reservation == 'true'){
@@ -247,7 +252,8 @@
                                     SET VENDU = VENDU + '".$nb_places."'
                                     WHERE TYPE = '".$type_promo."' 
                                     AND DATE = '".$date_reservation."' 
-                                    AND ZONE = '".$zone_bloc."'");
+                                    AND ZONE = '".$zone_bloc."'
+                                    AND COURT = '".$court."'");
                 $stmt->execute();
                 header('Location: http://iutdoua-webetu.univ-lyon1.fr/~p1400208/CPOA/Billetterie/paiement.html');
                 exit;

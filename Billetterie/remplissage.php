@@ -1,20 +1,4 @@
 <?php
-ini_set('session.save_path', 'tmp');
-    session_start();
-    function Connect_db(){
-		$host="iutdoua-webetu.univ-lyon1.fr"; 
-		$user="p1405029";     
-		$password="213866";     
-		$dbname="p1405029";
-		
-		try {
-		    $bdd=new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8',$user,$password);
-		    return $bdd;
-		}
-		catch (Exception $e) {
-		    die('Erreur : '.$e->GETMessage());
-		}  
-	}
 
 
 $i=0;
@@ -22,9 +6,9 @@ $j=0;
 $k=0;
 $l=0;
 $m=1;
-/*while ($i<=8){
+while ($i<=8){
     while ($j<=2){
-        while ($k<=5){*/
+        while ($k<=5){
             while ($l<=3){
                 if ($i==0) $date='2016-03-05';
                 elseif ($i==1) $date='2016-03-06';
@@ -52,26 +36,12 @@ $m=1;
                 elseif($l==2) $type='Licencie';
                 elseif($l==3) $type='Promo';
                 
-                
-                $bdd = Connect_db(); 
-                $stmt = $bdd->prepare("INSERT INTO `BILLETS` VALUES (?,?,?,?,?,100,0,100");
-					$stmt->execute(array($m,$court,$date,$type,$zone));
-                echo $m;
+                $stmt = "INSERT INTO `BILLETS`(`ID`, `COURT`, `DATE`, `TYPE`, `ZONE`, `DISPO`, `VENDU`, `TOTAL`) VALUES (".$m.",'".$court."','".$date."','".$type."','".$zone."',100,0,100);";
+                echo $stmt;
                 echo '</br>';
-                echo $date;
-                echo '</br>';
-                echo $zone;
-                echo '</br>';
-                echo $court;
-                echo '</br>';
-                echo $type;
-                echo '</br>';
-                echo'-----';
-                echo '</br>';
-                
                 $m++;
                 $l++;
-            }/*
+            }
             $l=0;
             $k++;
         }
@@ -80,7 +50,7 @@ $m=1;
     }
     $j=0;
     $i++;
-}*/
+}
 $bdd->connection = null;
 
 
