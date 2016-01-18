@@ -91,7 +91,9 @@ public class OracleMatchDAO implements IMatchDAO {
             rset = stmt.executeQuery("SELECT num_match, tranche_horaire_match, type_Match, participant1, participant2, equipe1, equipe2 FROM Match "
                                    + "WHERE niveau = '" + niveau + "' " 
                                    + "AND type_match = '" + type + "' "
-                                   + "AND nom_court_match = '" + nomCourt + "'");
+                                   + "AND nom_court_match = '" + nomCourt + "'"
+                                   + "AND Joueur_gagnant IS null " 
+                                   + "ORDER BY tranche_horaire_match");
             while(rset.next()){ //Boucle pour chaque ligne
                 matchCourant = new Match(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), 
                         rset.getString(5), rset.getString(6), rset.getString(7));
