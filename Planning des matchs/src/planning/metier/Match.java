@@ -124,4 +124,10 @@ public class Match {
         listeArbitresLigne.add(arbitreLigne6);
         return listeArbitresLigne;
     }
+
+    @Override
+    public String toString() {
+        return "Match{" + "numMatch=" + numMatch + ", horaire=" + horaire + ", niveau=" + niveau + ", typeMatch=" + typeMatch + ", nomCourtMatch=" + nomCourtMatch + ", participant1=" + participant1 + ", participant2=" + participant2 + ", equipe1=" + equipe1 + ", equipe2=" + equipe2 + '}';
+    }
+    
 }

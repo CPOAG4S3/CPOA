@@ -55,8 +55,8 @@ public class AfficherMatchs extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListSimpleCentral = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jListSimpleAnnexe = new javax.swing.JList<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListSimpleEnt = new javax.swing.JList<>();
@@ -167,12 +167,12 @@ public class AfficherMatchs extends javax.swing.JFrame {
 
         jTabbedPaneActSimple.addTab("Court Central Philippe-Chatrier", jPanelCourtCentSimple);
 
-        jListSimpleAnnexe.setModel(new javax.swing.AbstractListModel<String>() {
+        jList4.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = stringMatchsSimpleAnnexe;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jListSimpleAnnexe);
+        jScrollPane7.setViewportView(jList4);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -180,15 +180,15 @@ public class AfficherMatchs extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPaneActSimple.addTab("Court annexe Suzanne-Lenglen", jPanel3);
@@ -409,7 +409,7 @@ public class AfficherMatchs extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPaneMatchsAct, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 358, Short.MAX_VALUE))
+                .addGap(0, 331, Short.MAX_VALUE))
         );
 
         pack();
@@ -449,8 +449,8 @@ public class AfficherMatchs extends javax.swing.JFrame {
         stringMatchsSimpleEnt = remplirListe("simple", niveauSimple, "n°1");
         
         stringMatchsDoubleCent = remplirListe("double", niveauDouble, "Philippe-Chatrier");
-        stringMatchsSimpleAnnexe = remplirListe("double", niveauDouble, "Suzanne-Lenglen");
-        stringMatchsSimpleEnt = remplirListe("double", niveauDouble, "n°1");
+        stringMatchsDoubleAnnexe = remplirListe("double", niveauDouble, "Suzanne-Lenglen");
+        stringMatchsDoubleEnt = remplirListe("double", niveauDouble, "n°1");
       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -484,7 +484,7 @@ public class AfficherMatchs extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jListSimpleAnnexe;
+    private javax.swing.JList<String> jList4;
     private javax.swing.JList<String> jListSimpleCentral;
     private javax.swing.JList<String> jListSimpleEnt;
     private javax.swing.JMenu jMenuActMAtchs;
@@ -504,11 +504,11 @@ public class AfficherMatchs extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelDoubleCent;
     private javax.swing.JPanel jPanelMatchsActDouble;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPaneActSimple;
     private javax.swing.JTabbedPane jTabbedPaneDoubleAct;
     private javax.swing.JTabbedPane jTabbedPaneMatchsAct;

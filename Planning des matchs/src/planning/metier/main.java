@@ -16,7 +16,6 @@ import planning.dao.oracle.OracleCourtDAO;
 import planning.dao.oracle.OracleJoueurDAO;
 
 import planning.dao.oracle.OracleDataSourceDAO;
-import planning.dao.oracle.OracleMatchDAO;
 import planning.dao.oracle.OracleRamasseurDAO;
 
 
@@ -45,10 +44,6 @@ public class main {
         setConnexionRamasseur();
         afficherListeRamasseurs();
         System.out.println("");
-        //setConnexionMatch();
-        //ajouterMatch();
-        setConnexionMatch();
-        afficherListeMatchs();
                 
     }
   
@@ -121,29 +116,6 @@ public class main {
         List<Ramasseur> listeRamasseurs = ramasseurDAO.getLesRamasseurs();
         listeRamasseurs.stream().forEach((ramasseur) -> {
             System.out.println(ramasseur);
-        });
-   }
-
-    private static void setConnexionMatch() {
-        try{
-           dataSourceDAO = OracleDataSourceDAO.getOracleDataSourceDAO();
-           matchDAO = new OracleMatchDAO();
-           matchDAO.setDataSource(dataSourceDAO);
-           connexionBD = dataSourceDAO.getConnection();
-           matchDAO.setConnection(connexionBD);
-        }
-        catch(SQLException ex){
-        }
-    }
-    /*private static void ajouterMatch() {
-        //Avant, prendre en compte la limite max des arbitre
-        Match nouveauMatch = new Match(2, "", "1", "simple", "Philippe-Chatrier", "0123456", "0123457", "", "", "", "", "", "", "", "", "", "");
-        matchDAO.ajouterMatch(nouveauMatch);      
-    }*/
-   public static void afficherListeMatchs(){
-       List<Match> listeMatchs = matchDAO.getLesMatchs("simple", "16eme", "Philippe-Chartrier");
-        listeMatchs.stream().forEach((match) -> {
-            System.out.println(match);
         });
    }
 }
