@@ -36,7 +36,7 @@ while ($i<=8){
                 elseif($l==2) $type='Licencie';
                 elseif($l==3) $type='Promo';
                 
-                $stmt = "INSERT INTO `BILLETS`(`ID`, `COURT`, `DATE`, `TYPE`, `ZONE`, `DISPO`, `VENDU`, `TOTAL`) VALUES (".$m.",'".$court."','".$date."','".$type."','".$zone."',100,0,100);";
+                $stmt = "INSERT INTO `BILLETS`(`TOTAL`) VALUES (".$m.",'".$court."','".$date."','".$type."','".$zone."',30,0,30);";
                 echo $stmt;
                 echo '</br>';
                 $m++;

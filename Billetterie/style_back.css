@@ -6,15 +6,9 @@ html{
     background-size: cover;
 }
 
-img{
-    width:40vw;
-    height:auto;
-    align:center;
-}
-
 a{
     display:block;
-    text-align: center;
+    text-align: left;
 }
 
 table{
@@ -28,17 +22,18 @@ table{
 }
 
 td{
-    text-align: center;
+    text-align: left;
     padding-top:2vh;
 }
 
 .echec{
     color: red;
-    text-align:center;
+    text-align:left;
 }
 
 input{
     font-family: 'Roboto', sans-serif;
+    align: left;
 }
 
 input#nb_places{
@@ -50,10 +45,10 @@ input#datenaiss,date_reservation{
 }
 
 #calcul{
-    text-align:center;
+    text-align:left;
 }
 
 #redirect{
-    align:center;
+    align:left;
     background-color: white;            
 }
