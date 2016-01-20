@@ -9,7 +9,7 @@
 		
 		try {
 		    $bdd=new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8',$user,$password);
-		    return $bdd;
+		    return $bdd;                          // Connexion à la base de données
 		}
 		catch (Exception $e) {
 		    die('Erreur : '.$e->GETMessage());
@@ -25,7 +25,7 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="style.css" type="text/css">
         <?php
-            //INITIALISATION
+            //INITIALISATION des valeurs
             if (isset($_GET['nom'])){
                 $nom = $_GET['nom'];
             }
@@ -61,34 +61,35 @@
             } else {
                 $reservation = 'false';  
             }
+            // FIN INIT //
         ?>
     </head>
 
 
     <body>
         <form method="GET" action="accueil.php" id = "formulaire">
-            <table>
+            <table>             <!-- tableau contenant tous les inputs-->
                 <tr> 
                     <td> 
-                        <p>Nom : </p><input type="text" name="nom" value =<?php echo $nom; ?>>       
+                        <p>Nom : </p><input type="text" name="nom" value =<?php echo $nom; ?>>      <!-- Entrée du nom -->     
                     </td> 	
                     <td rowspan=4>	
-                        <img src="./Images/plan_court.png" alt="Plan des courts">
+                        <img src="./Images/plan_court.png" alt="Plan des courts">                   <!-- Plan du court -->
                     </td>				
                     <td>
-                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" min="2016-03-05" max="2016-03-13" value=<?php echo $date_reservation; ?>>
+                        <p>Date : </p><input type="date" name="date_reservation" id="date_reservation" min="2016-03-05" max="2016-03-13" value=<?php echo $date_reservation; ?>>                                                                            <!-- Entrée de la date -->
                     </td>			
                 </tr>
 
                 <tr> 
                     <td> 
-                        <p>Prénom : </p> <input type="text" name="prenom" value = <?php echo $prenom; ?>>
+                        <p>Prénom : </p> <input type="text" name="prenom" value = <?php echo $prenom; ?>>   <!-- Entrée du prénom -->
                     </td>
                     <td> 
                         <p> Court : </p>
                         <select name="court" form = "formulaire">
                         <?php
-                            require_once("select_court.php");
+                            require_once("select_court.php");                                       // utilisation de select_court pour afficher le menu déroulant
                         ?>
                         </select>
                     </td>
@@ -97,13 +98,13 @@
 
                 <tr> 
                     <td>
-                        <p>Date de naissance : </p> <input type="date" name="datenaiss" id="datenaiss" value=<?php echo $datenaiss; ?>>
+                        <p>Date de naissance : </p> <input type="date" name="datenaiss" id="datenaiss" value=<?php echo $datenaiss; ?>> <!-- Entrée de la date de naissance -->
                     </td>								
                     <td> 
                         <p> Zone : </p>
                         <select name="zone" form = "formulaire">
                         <?php
-                            require_once("select_zone.php");
+                            require_once("select_zone.php");                                        // utilisation de select_zone pour afficher le menu déroulant
                         ?>
                         </select>
                     </td>
@@ -112,21 +113,21 @@
 
                 <tr>	
                     <td> 
-                        <p>Mail : </p><input type="email" name="mail" value=<?php echo $mail; ?>>
+                        <p>Mail : </p><input type="email" name="mail" value=<?php echo $mail; ?>>   <!-- Entrée du mail -->     
                     </td>
                     <td> 	
                         <p>Nombre de places : </p><input type="number" min="1" name="nb_places" id="nb_places" value=<?php echo $nb_places; ?>>
-                    </td>
+                    </td>                                                                           <!-- Entrée du nombre de places -->
 
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <p>Code promo : </p><input type="text" name="code_promo" value=<?php echo $code_promo; ?>>
+                        <p>Code promo : </p><input type="text" name="code_promo" value=<?php echo $code_promo; ?>>  <!-- Entrée du code promo -->
                     </td>
                 </tr>
             </table>
                 <div id = "calcul">
-                    <input type="submit" value="Calcul du prix" id="calcul" >
+                    <input type="submit" value="Calcul du prix" id="calcul" >                   <!-- Envoi des valeurs -->
                 </div>
             </br>
         </form>
@@ -141,14 +142,14 @@
                 && !empty($_GET['datenaiss'])
                 && !empty($_GET['nb_places'])
 				&& $_GET['zone'] != 'default'
-				&& $_GET['court'] != 'default'){
+				&& $_GET['court'] != 'default'){                                    //Si tout est entré...
                     
-                    $bdd = Connect_db(); 
+                    $bdd = Connect_db();                                            //on se connecte à la BD
 					
 					// fetch type de code
 					$stmt = $bdd->prepare("SELECT TYPE FROM CODE WHERE CODE = '".$code_promo."'");
 					$stmt->execute();
-					$type_promo="grandPublic";
+					$type_promo="grandPublic";                                     //Select du type de promo par rapport au code
 					while($bddType = $stmt->fetch(PDO:: FETCH_ASSOC)){
 						if (!empty($bddType)){
 							$type_promo = $bddType['TYPE'];
@@ -157,7 +158,7 @@
 					
 					// fetch coef du type
 					$stmt = $bdd->prepare("SELECT COEF FROM REDUCTION WHERE PROMO = '".$type_promo."'");
-					$stmt->execute();
+					$stmt->execute();                                              //Select du coef de ce type
 					while($bddCodeCoef = $stmt->fetch(PDO:: FETCH_ASSOC)){
 						$coef_promo = $bddCodeCoef['COEF'];
 					}
@@ -197,23 +198,23 @@
                         echo '<p>Il reste '.$nb_places_restantes.' places correspondant à votre commande.</p>';
 					}
         
-                $prix = 50;
-                $bdd->connection = null;
-                if (!empty($coef_date) && $coef_date > 0){
-                    if($type_promo=="grandPublic"){
-                        $prix = $prix * $zone_promo_promo * $coef_date * $_GET['nb_places'];
+                $prix = 50;                     //Définition du prix de base
+                $bdd->connection = null;        //Déconnexion de la BD
+                if (!empty($coef_date) && $coef_date > 0){              //Si les valeurs sont entrées
+                    if($type_promo=="grandPublic"){                     //si c'est un billet grand public
+                        $prix = $prix * $zone_promo_promo * $coef_date * $_GET['nb_places'];    //Le prix utilise ces coefs
                         echo '<p class="affichage_prix">Coût total : '.$prix.' €</p>';						
                     }	
-                    else{
-                        $prix = $prix * $zone_promo_promo * $coef_date * $coef_promo * $_GET['nb_places'];
+                    else{                                               //sinon
+                        $prix = $prix * $zone_promo_promo * $coef_date * $coef_promo * $_GET['nb_places'];  //Il vaut ce coef
                         echo '<p class="affichage_prix">Coût total : '.$prix.' €</p>';						
                     }
                 } else {
-                    echo '<p class="echec">Merci de sélectionner une date valable (entre le 5 et le 13 mars 2016)</p>';
+                    echo '<p class="echec">Merci de sélectionner une date valable (entre le 5 et le 13 mars 2016)</p>';     //Affichage erreur
                 }	
        
             } else {	
-                echo '<p class="echec">Merci de remplir tous les champs avant de calculer le prix</p>';
+                echo '<p class="echec">Merci de remplir tous les champs avant de calculer le prix</p>';      //Affichage erreur
             }
             
             
